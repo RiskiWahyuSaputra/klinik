@@ -72,6 +72,7 @@ class AdminController extends Controller
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
             'role' => $request->role,
+            'is_active' => $request->boolean('is_active', true),
         ]);
 
         return redirect()->route('admin.users')->with('success', 'User berhasil dibuat.');
@@ -132,5 +133,48 @@ class AdminController extends Controller
         }
 
         return redirect()->route('admin.doctors')->with('success', 'Dokter berhasil ditambahkan.');
+    }
+
+    public function editDoctor(Doctor $doctor)
+    {
+        $doctor->load('user', 'services');
+        $services = Service::where('is_active', true)->get();
+        return view('admin.doctors.edit', compact('doctor', 'services'));
+    }
+
+    public function updateDoctor(Request $request, Doctor $doctor)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $doctor->user_id,
+            'phone' => 'required|string|max:20|unique:users,phone,' . $doctor->user_id,
+            'specialization' => 'nullable|string|max:255',
+            'license_number' => 'nullable|string|max:50',
+            'consultation_fee' => 'nullable|numeric',
+            'bio' => 'nullable|string',
+            'services' => 'nullable|array',
+            'services.*' => 'exists:services,id',
+        ]);
+
+        $doctor->user->update($request->only(['name', 'email', 'phone']));
+
+        $doctor->update([
+            'specialization' => $request->specialization,
+            'license_number' => $request->license_number,
+            'consultation_fee' => $request->consultation_fee ?? 0,
+            'bio' => $request->bio,
+        ]);
+
+        $doctor->services()->sync($request->services ?? []);
+
+        return redirect()->route('admin.doctors')->with('success', 'Dokter berhasil diperbarui.');
+    }
+
+    public function destroyDoctor(Doctor $doctor)
+    {
+        $doctor->user->delete();
+        $doctor->delete();
+
+        return redirect()->route('admin.doctors')->with('success', 'Dokter berhasil dihapus.');
     }
 }

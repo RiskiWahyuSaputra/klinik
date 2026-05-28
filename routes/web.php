@@ -131,6 +131,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/doctors', [AdminController::class, 'doctors'])->name('doctors');
         Route::get('/doctors/create', [AdminController::class, 'createDoctor'])->name('doctors.create');
         Route::post('/doctors', [AdminController::class, 'storeDoctor'])->name('doctors.store');
+        Route::get('/doctors/{doctor}/edit', [AdminController::class, 'editDoctor'])->name('doctors.edit');
+        Route::put('/doctors/{doctor}', [AdminController::class, 'updateDoctor'])->name('doctors.update');
+        Route::delete('/doctors/{doctor}', [AdminController::class, 'destroyDoctor'])->name('doctors.destroy');
 
         // Services
         Route::get('/services', [ServiceController::class, 'index'])->name('services');
@@ -141,7 +144,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
         // Schedules
-        Route::get('/schedules/{doctor}', [ScheduleController::class, 'index'])->name('schedules');
+        Route::get('/schedules/{doctor?}', [ScheduleController::class, 'index'])->name('schedules');
         Route::post('/schedules', [ScheduleController::class, 'store'])->name('schedules.store');
         Route::delete('/schedules/{schedule}', [ScheduleController::class, 'destroy'])->name('schedules.destroy');
 

@@ -107,7 +107,7 @@
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">🩺</div>
                         <span class="text-gray-700 font-medium">Kelola Layanan</span>
                     </a>
-                    <a href="{{ route('admin.doctors') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
+                    <a href="{{ route('admin.schedules') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">🗓️</div>
                         <span class="text-gray-700 font-medium">Kelola Jadwal</span>
                     </a>

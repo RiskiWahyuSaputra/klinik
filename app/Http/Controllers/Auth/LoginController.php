@@ -28,15 +28,16 @@ class LoginController extends Controller
                 Auth::logout();
                 return back()->withErrors([
                     'email' => 'Akun Anda telah dinonaktifkan.',
-                ]);
+                ])->with('error', 'Akun Anda telah dinonaktifkan.');
             }
 
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('dashboard'))
+                ->with('success', 'Selamat datang kembali, ' . $user->name . '!');
         }
 
         return back()->withErrors([
             'email' => 'Email atau password tidak sesuai.',
-        ])->onlyInput('email');
+        ])->onlyInput('email')->with('error', 'Email atau password tidak sesuai.');
     }
 
     public function logout(Request $request)
@@ -44,6 +45,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/')->with('success', 'Anda berhasil logout.');
     }
 }

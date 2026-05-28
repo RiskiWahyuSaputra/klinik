@@ -47,6 +47,7 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')
+            ->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name . '!');
     }
 }

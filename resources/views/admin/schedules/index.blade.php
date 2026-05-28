@@ -28,10 +28,10 @@
                             <tr class="border-b border-gray-50 hover:bg-pink-50/50 transition">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-800">dr. {{ $schedule->doctor->user->name }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-600">
-                                    @php
-                                        $days = ['sunday' => 'Minggu', 'monday' => 'Senin', 'tuesday' => 'Selasa', 'wednesday' => 'Rabu', 'thursday' => 'Kamis', 'friday' => 'Jumat', 'saturday' => 'Sabtu'];
+                                                    @php
+                                        $days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
                                     @endphp
-                                    {{ $days[$schedule->day_of_week] ?? ucfirst($schedule->day_of_week) }}
+                                    {{ $days[$schedule->day_of_week] ?? $schedule->day_of_week }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-600">{{ $schedule->start_time }}</td>
                                 <td class="px-6 py-4 text-sm text-gray-600">{{ $schedule->end_time }}</td>
@@ -83,17 +83,17 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-medium mb-2">Hari</label>
-                        <select name="day_of_week" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('day_of_week') border-red-300 @enderror">
-                            <option value="">Pilih Hari</option>
-                            <option value="monday" @selected(old('day_of_week') == 'monday')>Senin</option>
-                            <option value="tuesday" @selected(old('day_of_week') == 'tuesday')>Selasa</option>
-                            <option value="wednesday" @selected(old('day_of_week') == 'wednesday')>Rabu</option>
-                            <option value="thursday" @selected(old('day_of_week') == 'thursday')>Kamis</option>
-                            <option value="friday" @selected(old('day_of_week') == 'friday')>Jumat</option>
-                            <option value="saturday" @selected(old('day_of_week') == 'saturday')>Sabtu</option>
-                            <option value="sunday" @selected(old('day_of_week') == 'sunday')>Minggu</option>
-                        </select>
+                            <select name="day_of_week" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('day_of_week') border-red-300 @enderror">
+                                <option value="">Pilih Hari</option>
+                                <option value="1" @selected(old('day_of_week') == 1)>Senin</option>
+                                <option value="2" @selected(old('day_of_week') == 2)>Selasa</option>
+                                <option value="3" @selected(old('day_of_week') == 3)>Rabu</option>
+                                <option value="4" @selected(old('day_of_week') == 4)>Kamis</option>
+                                <option value="5" @selected(old('day_of_week') == 5)>Jumat</option>
+                                <option value="6" @selected(old('day_of_week') == 6)>Sabtu</option>
+                                <option value="0" @selected(old('day_of_week') == 0)>Minggu</option>
+                            </select>
                         @error('day_of_week') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
 

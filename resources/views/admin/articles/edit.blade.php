@@ -1,74 +1,85 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Edit Artikel')
 
+@section('breadcrumb', 'Admin / Artikel / Edit')
+
 @section('content')
-<div class="py-8">
-    <div class="max-w-3xl mx-auto">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-8">Edit Artikel</h1>
+<div class="page-header">
+    <h1 class="page-title">Edit Artikel</h1>
+    <a href="{{ route('admin.articles') }}" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Kembali
+    </a>
+</div>
 
-        <div class="bg-white rounded-2xl shadow-md p-8">
-            <form method="POST" action="{{ route('admin.articles.update', $article) }}">
-                @csrf
-                @method('PUT')
+<div class="admin-card" style="max-width: 720px; padding: 28px 32px;">
+    <form method="POST" action="{{ route('admin.articles.update', $article) }}">
+        @csrf
+        @method('PUT')
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2">Judul Artikel</label>
-                    <input type="text" name="title" value="{{ old('title', $article->title) }}" required
-                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('title') border-red-300 @enderror"
-                        placeholder="Judul artikel">
-                    @error('title') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2">Slug</label>
-                    <input type="text" name="slug" value="{{ old('slug', $article->slug) }}"
-                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('slug') border-red-300 @enderror"
-                        placeholder="judul-artikel">
-                    @error('slug') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2">Kategori</label>
-                    <input type="text" name="category" value="{{ old('category', $article->category) }}"
-                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition"
-                        placeholder="Contoh: Kesehatan, Tips">
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2">Excerpt / Ringkasan</label>
-                    <textarea name="excerpt" rows="3"
-                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition resize-none @error('excerpt') border-red-300 @enderror"
-                        placeholder="Ringkasan artikel">{{ old('excerpt', $article->excerpt) }}</textarea>
-                    @error('excerpt') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2">Konten</label>
-                    <textarea name="content" rows="12" required
-                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition resize-y @error('content') border-red-300 @enderror"
-                        placeholder="Tulis konten artikel di sini...">{{ old('content', $article->content) }}</textarea>
-                    @error('content') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                </div>
-
-                <div class="mb-6">
-                    <label class="flex items-center space-x-3">
-                        <input type="checkbox" name="is_published" value="1" @checked($article->is_published)
-                            class="w-4 h-4 rounded border-gray-300 text-pink-500 focus:ring-pink-300">
-                        <span class="text-gray-700 text-sm font-medium">Publikasikan</span>
-                    </label>
-                </div>
-
-                <div class="flex justify-end space-x-4">
-                    <a href="{{ route('admin.articles') }}" class="px-6 py-3 rounded-xl font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Batal</a>
-                    <button type="submit"
-                        class="text-white px-8 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
-                        style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
-                        Simpan Perubahan
-                    </button>
-                </div>
-            </form>
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Judul Artikel</label>
+            <input type="text" name="title" value="{{ old('title', $article->title) }}" required
+                class="form-input @error('title') error @enderror"
+                placeholder="Judul artikel">
+            @error('title') <p class="form-error">{{ $message }}</p> @enderror
         </div>
-    </div>
+
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Slug</label>
+            <input type="text" name="slug" value="{{ old('slug', $article->slug) }}"
+                class="form-input @error('slug') error @enderror"
+                placeholder="judul-artikel">
+            @error('slug') <p class="form-error">{{ $message }}</p> @enderror
+        </div>
+
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Kategori</label>
+            <input type="text" name="category" value="{{ old('category', $article->category) }}"
+                class="form-input"
+                placeholder="Contoh: Kesehatan, Tips">
+        </div>
+
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Excerpt / Ringkasan</label>
+            <textarea name="excerpt" rows="3"
+                class="form-input @error('excerpt') error @enderror"
+                placeholder="Ringkasan artikel">{{ old('excerpt', $article->excerpt) }}</textarea>
+            @error('excerpt') <p class="form-error">{{ $message }}</p> @enderror
+        </div>
+
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Konten</label>
+            <textarea name="content" rows="12" required
+                class="form-input @error('content') error @enderror"
+                placeholder="Tulis konten artikel di sini..."
+                style="min-height: 250px;">{{ old('content', $article->content) }}</textarea>
+            @error('content') <p class="form-error">{{ $message }}</p> @enderror
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <input type="checkbox" name="is_published" value="1" @checked($article->is_published)
+                    style="width: 16px; height: 16px; border-radius: 4px; accent-color: #FF69B4;">
+                <span style="font-size: 13px; font-weight: 500; color: #4a4a6a;">Publikasikan</span>
+            </label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px;">
+            <a href="{{ route('admin.articles') }}" class="btn-secondary">Batal</a>
+            <button type="submit" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                Simpan Perubahan
+            </button>
+        </div>
+    </form>
 </div>
 @endsection

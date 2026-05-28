@@ -1,60 +1,64 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Kelola Layanan')
 
+@section('breadcrumb', 'Admin / Layanan')
+
 @section('content')
-<div class="py-8">
-    <div class="flex justify-between items-center mb-8">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800">Kelola Layanan</h1>
-        <a href="{{ route('admin.services.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
-            + Tambah Layanan
-        </a>
-    </div>
+<div class="page-header">
+    <h1 class="page-title">Kelola Layanan</h1>
+    <a href="{{ route('admin.services.create') }}" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Tambah Layanan
+    </a>
+</div>
 
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <div class="overflow-x-auto">
-            <table class="w-full">
-                <thead>
-                    <tr class="text-left text-sm text-gray-500 border-b border-gray-100">
-                        <th class="px-6 py-4 font-medium">Nama Layanan</th>
-                        <th class="px-6 py-4 font-medium">Deskripsi</th>
-                        <th class="px-6 py-4 font-medium">Harga</th>
-                        <th class="px-6 py-4 font-medium">Durasi</th>
-                        <th class="px-6 py-4 font-medium">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($services as $service)
-                    <tr class="border-b border-gray-50 hover:bg-pink-50/50 transition">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">{{ $service->name }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">{{ $service->description ?? '-' }}</td>
-                        <td class="px-6 py-4 text-sm font-medium" style="color: #D4AF37;">Rp {{ number_format($service->price, 0, ',', '.') }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $service->duration }} menit</td>
-                        <td class="px-6 py-4">
-                            <div class="flex space-x-2">
-                                <a href="{{ route('admin.services.edit', $service) }}" class="text-sm font-medium hover:underline text-blue-500">Edit</a>
-                                <form method="POST" action="{{ route('admin.services.destroy', $service) }}" onsubmit="return confirm('Hapus layanan ini?')">
-                                    @csrf @method('DELETE')
-                                    <button type="submit" class="text-sm text-red-500 hover:underline">Hapus</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="5" class="px-6 py-12 text-center text-gray-400">
-                            <p class="text-4xl mb-4">🩺</p>
-                            <p>Belum ada layanan.</p>
-                        </td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+<div class="admin-card overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Nama Layanan</th>
+                    <th>Deskripsi</th>
+                    <th>Harga</th>
+                    <th>Durasi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($services as $service)
+                <tr>
+                    <td data-label="Nama Layanan" style="font-weight: 600; color: #1a1a2e;">{{ $service->name }}</td>
+                    <td data-label="Deskripsi" style="max-width: 200px; white-space: normal;">{{ $service->description ?? '-' }}</td>
+                    <td data-label="Harga" style="font-weight: 600; color: #D4AF37;">Rp {{ number_format($service->price, 0, ',', '.') }}</td>
+                    <td data-label="Durasi">{{ $service->duration }} menit</td>
+                    <td data-label="Aksi">
+                        <div style="display: flex; gap: 8px;">
+                            <a href="{{ route('admin.services.edit', $service) }}" class="btn-sm btn-secondary" style="font-size: 11px; padding: 5px 12px;">Edit</a>
+                            <form method="POST" action="{{ route('admin.services.destroy', $service) }}" onsubmit="return confirm('Hapus layanan ini?')">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn-sm btn-danger" style="font-size: 11px;">Hapus</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 48px 20px; color: #8e8ea0;">
+                        <p style="font-size: 36px; margin-bottom: 12px;">🩺</p>
+                        <p>Belum ada layanan.</p>
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
+</div>
 
-    <div class="mt-6">
-        {{ $services->links() }}
-    </div>
+<div class="pagination-wrap">
+    {{ $services->links() }}
 </div>
 @endsection

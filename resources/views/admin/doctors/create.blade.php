@@ -1,94 +1,104 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'Tambah Dokter')
 
+@section('breadcrumb', 'Admin / Dokter / Tambah')
+
 @section('content')
-<div class="py-8">
-    <div class="max-w-2xl mx-auto">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-8">Tambah Dokter Baru</h1>
+<div class="page-header">
+    <h1 class="page-title">Tambah Dokter Baru</h1>
+    <a href="{{ route('admin.doctors') }}" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Kembali
+    </a>
+</div>
 
-        <div class="bg-white rounded-2xl shadow-md p-8">
-            <form method="POST" action="{{ route('admin.doctors.store') }}">
-                @csrf
+<div class="admin-card" style="max-width: 720px; padding: 28px 32px;">
+    <form method="POST" action="{{ route('admin.doctors.store') }}">
+        @csrf
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="md:col-span-2">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Nama Lengkap</label>
-                        <input type="text" name="name" value="{{ old('name') }}" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('name') border-red-300 @enderror"
-                            placeholder="Nama dokter">
-                        @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                    </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+            <div style="grid-column: 1 / -1;">
+                <label class="form-label">Nama Lengkap</label>
+                <input type="text" name="name" value="{{ old('name') }}" required
+                    class="form-input @error('name') error @enderror"
+                    placeholder="Nama dokter">
+                @error('name') <p class="form-error">{{ $message }}</p> @enderror
+            </div>
 
-                    <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Email</label>
-                        <input type="email" name="email" value="{{ old('email') }}" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('email') border-red-300 @enderror"
-                            placeholder="dokter@email.com">
-                        @error('email') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                    </div>
+            <div>
+                <label class="form-label">Email</label>
+                <input type="email" name="email" value="{{ old('email') }}" required
+                    class="form-input @error('email') error @enderror"
+                    placeholder="dokter@email.com">
+                @error('email') <p class="form-error">{{ $message }}</p> @enderror
+            </div>
 
-                    <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Telepon</label>
-                        <input type="text" name="phone" value="{{ old('phone') }}"
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition"
-                            placeholder="08123456789">
-                    </div>
+            <div>
+                <label class="form-label">Telepon</label>
+                <input type="text" name="phone" value="{{ old('phone') }}"
+                    class="form-input"
+                    placeholder="08123456789">
+            </div>
 
-                    <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Password</label>
-                        <input type="password" name="password" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('password') border-red-300 @enderror"
-                            placeholder="Minimal 8 karakter">
-                        @error('password') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                    </div>
+            <div>
+                <label class="form-label">Password</label>
+                <input type="password" name="password" required
+                    class="form-input @error('password') error @enderror"
+                    placeholder="Minimal 8 karakter">
+                @error('password') <p class="form-error">{{ $message }}</p> @enderror
+            </div>
 
-                    <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Konfirmasi Password</label>
-                        <input type="password" name="password_confirmation" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition"
-                            placeholder="Ulangi password">
-                    </div>
+            <div>
+                <label class="form-label">Konfirmasi Password</label>
+                <input type="password" name="password_confirmation" required
+                    class="form-input"
+                    placeholder="Ulangi password">
+            </div>
 
-                    <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Spesialisasi</label>
-                        <input type="text" name="specialization" value="{{ old('specialization') }}"
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition"
-                            placeholder="Contoh: Dokter Umum, Spesialis Anak">
-                    </div>
+            <div>
+                <label class="form-label">Spesialisasi</label>
+                <input type="text" name="specialization" value="{{ old('specialization') }}"
+                    class="form-input"
+                    placeholder="Contoh: Dokter Umum, Spesialis Anak">
+            </div>
 
-                    <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Tahun Pengalaman</label>
-                        <input type="number" name="experience_years" value="{{ old('experience_years') }}"
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition"
-                            placeholder="0">
-                    </div>
+            <div>
+                <label class="form-label">Tahun Pengalaman</label>
+                <input type="number" name="experience_years" value="{{ old('experience_years') }}"
+                    class="form-input"
+                    placeholder="0">
+            </div>
 
-                    <div class="md:col-span-2">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Layanan</label>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                            @foreach($services as $service)
-                            <label class="flex items-center space-x-2 p-3 rounded-xl border border-gray-100 hover:bg-pink-50 cursor-pointer transition">
-                                <input type="checkbox" name="services[]" value="{{ $service->id }}"
-                                    class="rounded border-gray-300 text-pink-500 focus:ring-pink-300"
-                                    @checked(in_array($service->id, old('services', [])))>
-                                <span class="text-sm text-gray-700">{{ $service->name }}</span>
-                            </label>
-                            @endforeach
-                        </div>
-                        @error('services') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
-                    </div>
+            <div style="grid-column: 1 / -1;">
+                <label class="form-label">Layanan</label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px;">
+                    @foreach($services as $service)
+                    <label style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 10px; border: 1px solid #eef0f5; cursor: pointer; transition: all 0.15s ease; font-size: 13px; color: #4a4a6a;" onmouseover="this.style.background='#f8f9fc'" onmouseout="this.style.background='transparent'">
+                        <input type="checkbox" name="services[]" value="{{ $service->id }}"
+                            style="width: 16px; height: 16px; border-radius: 4px; accent-color: #FF69B4;"
+                            @checked(in_array($service->id, old('services', [])))>
+                        {{ $service->name }}
+                    </label>
+                    @endforeach
                 </div>
-
-                <div class="mt-8 flex justify-end">
-                    <button type="submit"
-                        class="text-white px-8 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
-                        style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
-                        Tambah Dokter
-                    </button>
-                </div>
-            </form>
+                @error('services') <p class="form-error">{{ $message }}</p> @enderror
+            </div>
         </div>
-    </div>
+
+        <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                    <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                Tambah Dokter
+            </button>
+        </div>
+    </form>
 </div>
 @endsection

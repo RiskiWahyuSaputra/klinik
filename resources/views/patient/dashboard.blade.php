@@ -14,7 +14,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Total Appointment</p>
-                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ $totalAppointments }}</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ $appointmentCount }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">
                     📅
@@ -25,7 +25,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Selesai</p>
-                    <p class="text-3xl font-bold text-green-600 mt-1">{{ $completedAppointments }}</p>
+                    <p class="text-3xl font-bold text-green-600 mt-1">{{ $completedCount }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: #d4edda;">
                     ✅
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Menunggu</p>
-                    <p class="text-3xl font-bold text-yellow-600 mt-1">{{ $pendingAppointments }}</p>
+                    <p class="text-3xl font-bold text-yellow-600 mt-1">{{ $pendingCount }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: #fff3cd;">
                     ⏳

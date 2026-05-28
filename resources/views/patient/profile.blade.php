@@ -69,19 +69,13 @@
             <div class="bg-white rounded-2xl shadow-md p-6">
                 <h2 class="text-xl font-semibold text-gray-800 mb-6">Kontak Darurat</h2>
 
-                <form method="POST" action="{{ route('patient.emergency.update') }}">
+                <form method="POST" action="{{ route('patient.profile.update') }}">
                     @csrf
                     @method('PUT')
 
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-medium mb-2">Nama Kontak Darurat</label>
                         <input type="text" name="emergency_contact_name" value="{{ old('emergency_contact_name', $patient->emergency_contact_name ?? '') }}"
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition">
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Hubungan</label>
-                        <input type="text" name="emergency_contact_relationship" value="{{ old('emergency_contact_relationship', $patient->emergency_contact_relationship ?? '') }}"
                             class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition">
                     </div>
 
@@ -102,7 +96,7 @@
             <div class="bg-white rounded-2xl shadow-md p-6">
                 <h2 class="text-xl font-semibold text-gray-800 mb-6">Ubah Password</h2>
 
-                <form method="POST" action="{{ route('password.update') }}">
+                <form method="POST" action="{{ route('profile.password') }}">
                     @csrf
                     @method('PUT')
 

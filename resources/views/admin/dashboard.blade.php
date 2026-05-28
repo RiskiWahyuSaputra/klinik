@@ -95,23 +95,23 @@
             <div class="bg-white rounded-2xl shadow-md p-6">
                 <h2 class="text-lg font-semibold text-gray-800 mb-4">Menu Cepat</h2>
                 <div class="space-y-3">
-                    <a href="{{ route('admin.users.index') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
+                    <a href="{{ route('admin.users') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">👥</div>
                         <span class="text-gray-700 font-medium">Kelola Pengguna</span>
                     </a>
-                    <a href="{{ route('admin.doctors.index') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
+                    <a href="{{ route('admin.doctors') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">👨‍⚕️</div>
                         <span class="text-gray-700 font-medium">Kelola Dokter</span>
                     </a>
-                    <a href="{{ route('admin.services.index') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
+                    <a href="{{ route('admin.services') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">🩺</div>
                         <span class="text-gray-700 font-medium">Kelola Layanan</span>
                     </a>
-                    <a href="{{ route('admin.schedules.index') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
+                    <a href="{{ route('admin.doctors') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">🗓️</div>
                         <span class="text-gray-700 font-medium">Kelola Jadwal</span>
                     </a>
-                    <a href="{{ route('admin.articles.index') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
+                    <a href="{{ route('admin.articles') }}" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-pink-50 transition">
                         <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">📝</div>
                         <span class="text-gray-700 font-medium">Kelola Artikel</span>
                     </a>

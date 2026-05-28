@@ -6,9 +6,7 @@
 <div class="py-8">
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-3xl font-bold font-[Poppins] text-gray-800">Pembayaran</h1>
-        <a href="{{ route('staff.payments.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
-            + Pembayaran Baru
-        </a>
+        <span class="text-sm text-gray-400">Pembayaran dicatat melalui halaman appointment</span>
     </div>
 
     <div class="bg-white rounded-2xl shadow-md overflow-hidden">

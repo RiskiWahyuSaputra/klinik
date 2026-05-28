@@ -6,7 +6,7 @@
 <div class="py-8">
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-3xl font-bold font-[Poppins] text-gray-800">Kelola Appointment</h1>
-        <a href="{{ route('staff.appointments.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
+        <a href="{{ route('appointments.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
             + Appointment Baru
         </a>
     </div>
@@ -64,9 +64,9 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
-                                <a href="{{ route('staff.appointments.show', $appointment) }}" class="text-xs font-medium hover:underline px-3 py-1" style="color: #D4AF37;">Detail</a>
+                                <a href="{{ route('appointments.show', $appointment) }}" class="text-xs font-medium hover:underline px-3 py-1" style="color: #D4AF37;">Detail</a>
                                 @if($appointment->status == 'pending')
-                                <form method="POST" action="{{ route('staff.appointments.cancel', $appointment) }}" onsubmit="return confirm('Batalkan?')">
+                                <form method="POST" action="{{ route('appointments.cancel', $appointment) }}" onsubmit="return confirm('Batalkan?')">
                                     @csrf @method('PUT')
                                     <button type="submit" class="text-xs text-red-500 hover:underline px-3 py-1">Batal</button>
                                 </form>

@@ -67,7 +67,7 @@
 
         <div class="bg-white rounded-2xl p-8 shadow-md">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">Kirim Pesan</h3>
-            <form method="POST" action="{{ route('contact.send') }}">
+            <form method="POST" action="#" onsubmit="alert('Fitur kirim pesan akan segera tersedia!'); return false;">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-medium mb-2">Nama Lengkap</label>

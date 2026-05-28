@@ -87,26 +87,30 @@
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
                                 @if($appointment->status == 'pending' || $appointment->status == 'confirmed')
-                                <form method="POST" action="{{ route('staff.appointments.checkin', $appointment) }}">
+                                <form method="POST" action="{{ route('appointments.update-status', $appointment) }}">
                                     @csrf @method('PUT')
+                                    <input type="hidden" name="status" value="checked_in">
                                     <button type="submit" class="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg hover:bg-indigo-200 transition">Check In</button>
                                 </form>
                                 @endif
                                 @if($appointment->status == 'checked_in')
-                                <form method="POST" action="{{ route('staff.appointments.start', $appointment) }}">
+                                <form method="POST" action="{{ route('appointments.update-status', $appointment) }}">
                                     @csrf @method('PUT')
+                                    <input type="hidden" name="status" value="in_progress">
                                     <button type="submit" class="text-xs bg-purple-100 text-purple-700 px-3 py-1 rounded-lg hover:bg-purple-200 transition">Mulai</button>
                                 </form>
                                 @endif
                                 @if($appointment->status == 'in_progress')
-                                <form method="POST" action="{{ route('staff.appointments.complete', $appointment) }}">
+                                <form method="POST" action="{{ route('appointments.update-status', $appointment) }}">
                                     @csrf @method('PUT')
+                                    <input type="hidden" name="status" value="completed">
                                     <button type="submit" class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-lg hover:bg-green-200 transition">Selesai</button>
                                 </form>
                                 @endif
                                 @if($appointment->status == 'pending')
-                                <form method="POST" action="{{ route('staff.appointments.cancel', $appointment) }}" onsubmit="return confirm('Batalkan appointment ini?')">
+                                <form method="POST" action="{{ route('appointments.update-status', $appointment) }}" onsubmit="return confirm('Batalkan appointment ini?')">
                                     @csrf @method('PUT')
+                                    <input type="hidden" name="status" value="cancelled">
                                     <button type="submit" class="text-xs bg-red-100 text-red-700 px-3 py-1 rounded-lg hover:bg-red-200 transition">Batal</button>
                                 </form>
                                 @endif

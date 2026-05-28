@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="flex justify-end space-x-4">
-                    <a href="{{ route('admin.articles.index') }}" class="px-6 py-3 rounded-xl font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Batal</a>
+                    <a href="{{ route('admin.articles') }}" class="px-6 py-3 rounded-xl font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition">Batal</a>
                     <button type="submit"
                         class="text-white px-8 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
                         style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">

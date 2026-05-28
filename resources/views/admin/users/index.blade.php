@@ -45,7 +45,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
-                                <form method="POST" action="{{ route('admin.users.toggle-active', $user) }}">
+                                <form method="POST" action="{{ route('admin.users.toggle-status', $user) }}">
                                     @csrf @method('PUT')
                                     <button type="submit" class="text-sm font-medium px-3 py-1 rounded-lg {{ $user->is_active ? 'bg-red-100 text-red-700 hover:bg-red-200' : 'bg-green-100 text-green-700 hover:bg-green-200' }} transition">
                                         {{ $user->is_active ? 'Nonaktifkan' : 'Aktifkan' }}

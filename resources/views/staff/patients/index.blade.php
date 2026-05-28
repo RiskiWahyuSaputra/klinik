@@ -39,8 +39,7 @@
                         <td class="px-6 py-4 text-sm text-gray-600">{{ $patient->phone ?? $patient->user->phone ?? '-' }}</td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
-                                <a href="{{ route('staff.patients.show', $patient) }}" class="text-sm font-medium hover:underline" style="color: #D4AF37;">Detail</a>
-                                <a href="{{ route('staff.patients.edit', $patient) }}" class="text-sm text-blue-500 hover:underline">Edit</a>
+                                <span class="text-sm text-gray-400">-</span>
                             </div>
                         </td>
                     </tr>

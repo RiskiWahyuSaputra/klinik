@@ -34,11 +34,7 @@
                         <td class="px-6 py-4 text-sm text-gray-600">{{ $doctor->services->pluck('name')->implode(', ') ?: '-' }}</td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
-                                <a href="{{ route('admin.doctors.edit', $doctor) }}" class="text-sm font-medium hover:underline text-blue-500">Edit</a>
-                                <form method="POST" action="{{ route('admin.doctors.destroy', $doctor) }}" onsubmit="return confirm('Hapus dokter ini?')">
-                                    @csrf @method('DELETE')
-                                    <button type="submit" class="text-sm text-red-500 hover:underline">Hapus</button>
-                                </form>
+                                <span class="text-sm text-gray-400">-</span>
                             </div>
                         </td>
                     </tr>

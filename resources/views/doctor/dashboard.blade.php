@@ -97,7 +97,7 @@
                                 Input Rekam Medis
                             </a>
                             @elseif($appointment->status == 'completed')
-                            <a href="{{ route('doctor.medical-records.show', $appointment->medicalRecord) }}" class="text-sm font-medium hover:underline" style="color: #D4AF37;">Lihat Rekam Medis</a>
+                            <a href="{{ route('medical-records.show', $appointment->medicalRecord) }}" class="text-sm font-medium hover:underline" style="color: #D4AF37;">Lihat Rekam Medis</a>
                             @else
                             <span class="text-sm text-gray-400">Menunggu</span>
                             @endif

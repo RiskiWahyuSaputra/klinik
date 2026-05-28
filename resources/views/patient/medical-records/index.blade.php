@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($medicalRecords as $record)
+                    @forelse($records as $record)
                     <tr class="border-b border-gray-50 hover:bg-pink-50/50 transition">
                         <td class="px-6 py-4 text-sm text-gray-600">{{ $record->created_at->format('d M Y') }}</td>
                         <td class="px-6 py-4 text-sm text-gray-600">dr. {{ $record->appointment->doctor->user->name ?? '-' }}</td>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="mt-6">
-        {{ $medicalRecords->links() }}
+        {{ $records->links() }}
     </div>
 </div>
 @endsection

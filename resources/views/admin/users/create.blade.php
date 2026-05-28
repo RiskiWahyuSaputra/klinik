@@ -28,6 +28,14 @@
                 </div>
 
                 <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">Nomor Telepon</label>
+                    <input type="text" name="phone" value="{{ old('phone') }}" required
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('phone') border-red-300 @enderror"
+                        placeholder="08123456789">
+                    @error('phone') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-medium mb-2">Password</label>
                     <input type="password" name="password" required
                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('password') border-red-300 @enderror"

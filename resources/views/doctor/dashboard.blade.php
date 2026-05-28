@@ -12,7 +12,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Pasien Hari Ini</p>
-                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ $todayPatients }}</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ $todayAppointments->count() }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">👨‍⚕️</div>
             </div>
@@ -21,7 +21,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Menunggu</p>
-                    <p class="text-3xl font-bold text-yellow-600 mt-1">{{ $pending }}</p>
+                    <p class="text-3xl font-bold text-yellow-600 mt-1">{{ $pendingCount }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: #fff3cd;">⏳</div>
             </div>
@@ -30,7 +30,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Check In</p>
-                    <p class="text-3xl font-bold text-indigo-600 mt-1">{{ $checkedIn }}</p>
+                    <p class="text-3xl font-bold text-indigo-600 mt-1">{{ $checkedInCount }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: #e0e7ff;">✅</div>
             </div>
@@ -39,7 +39,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-400 text-sm">Selesai</p>
-                    <p class="text-3xl font-bold text-green-600 mt-1">{{ $completed }}</p>
+                    <p class="text-3xl font-bold text-green-600 mt-1">{{ $completedCount }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: #d4edda;">✓</div>
             </div>

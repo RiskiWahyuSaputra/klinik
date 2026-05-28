@@ -27,6 +27,20 @@
                     @error('description') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">Kategori</label>
+                    <select name="category" required
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('category') border-red-300 @enderror">
+                        <option value="">Pilih Kategori</option>
+                        <option value="general" @selected(old('category') == 'general')>Umum</option>
+                        <option value="dental" @selected(old('category') == 'dental')>Gigi</option>
+                        <option value="pediatric" @selected(old('category') == 'pediatric')>Anak</option>
+                        <option value="skin" @selected(old('category') == 'skin')>Kulit</option>
+                        <option value="other" @selected(old('category') == 'other')>Lainnya</option>
+                    </select>
+                    @error('category') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-gray-700 text-sm font-medium mb-2">Harga (Rp)</label>
@@ -44,7 +58,15 @@
                     </div>
                 </div>
 
-                <div class="mt-8 flex justify-end">
+                <div class="mb-6">
+                    <label class="flex items-center space-x-3">
+                        <input type="checkbox" name="is_active" value="1" checked
+                            class="w-4 h-4 rounded border-gray-300 text-pink-500 focus:ring-pink-300">
+                        <span class="text-gray-700 text-sm font-medium">Layanan Aktif</span>
+                    </label>
+                </div>
+
+                <div class="flex justify-end">
                     <button type="submit"
                         class="text-white px-8 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
                         style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">

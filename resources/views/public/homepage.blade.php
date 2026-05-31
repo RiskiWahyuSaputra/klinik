@@ -73,11 +73,11 @@
 
         /* ── Card lift ── */
         .card-lift {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .card-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -12px rgba(244, 63, 94, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px -15px rgba(244, 63, 94, 0.2);
         }
 
         /* ── Gold shimmer CTA ── */
@@ -712,19 +712,26 @@
         gsap.fromTo(el, 
             { 
                 opacity: 0, 
-                y: 40 
+                y: 30,
+                scale: 0.96,
+                filter: 'blur(8px)',
+                rotateX: -5
             },
             {
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 88%',
+                    start: 'top 92%',
                     toggleActions: 'play none none none'
                 },
                 opacity: 1,
                 y: 0,
-                duration: 1,
+                scale: 1,
+                filter: 'blur(0px)',
+                rotateX: 0,
+                duration: 1.2,
                 ease: 'expo.out',
-                delay: el.classList.contains('card-lift') ? (index % 3) * 0.1 : 0
+                delay: el.classList.contains('card-lift') ? (index % 3) * 0.08 : 0,
+                clearProps: 'filter, transform'
             }
         );
     });

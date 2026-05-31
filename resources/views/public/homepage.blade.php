@@ -298,7 +298,7 @@
             <div class="flex-1 text-center lg:text-left">
                 <!-- Badge -->
                 <div class="reveal inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full text-xs font-bold text-rose-600 border border-rose-200/60 shadow-sm mb-6">
-                    <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+                    <span class="w-2 h-2 rounded-full bg-rose-400 "></span>
                     LAYANAN KESEHATAN PROFESIONAL
                 </div>
 

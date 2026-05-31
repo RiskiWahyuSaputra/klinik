@@ -544,7 +544,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div class="reveal">
             <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-950 mb-4">
-                Siap Memulai <span class="bg-gradient-to-r from-gold-700 to-gold-800 bg-clip-text text-transparent">Perawatan Kesehatan</span> Anda?
+                Siap Memulai <span class="bg-gradient-to-r from-gold-700 to-gold-800 bg-clip-text" style="color:#B8860B">Perawatan Kesehatan</span> Anda?
             </h2>
             <p class="text-gray-800 text-lg mb-10 max-w-2xl mx-auto leading-relaxed font-medium">Hubungi kami atau buat appointment secara online. Kami siap melayani Anda dengan sepenuh hati.</p>
         </div>

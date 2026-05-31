@@ -49,7 +49,7 @@
         .hero-screen {
             min-height: 100vh;
             min-height: 100dvh;
-            background: linear-gradient(rgba(236, 254, 255, 0.8), rgba(236, 254, 255, 0.8)), url('/images/bg-herosection.jpg');
+            background: linear-gradient(rgba(236, 254, 255, 0.8), rgba(236, 254, 255, 0.8)), url('/images/bg-hero.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;

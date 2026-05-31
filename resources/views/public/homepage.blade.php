@@ -45,22 +45,14 @@
         ::-webkit-scrollbar-track { background: #FFF1F2; }
         ::-webkit-scrollbar-thumb { background: #FDA4AF; border-radius: 10px; }
 
-        /* ── Hero full-screen ── */
+        /* ── Hero background image ── */
         .hero-screen {
             min-height: 100vh;
             min-height: 100dvh;
-        }
-
-        /* ── Animated gradient background ── */
-        .hero-gradient-bg {
-            background: linear-gradient(135deg, #FFF8FA 0%, #FFE4EC 25%, #FFD6E0 50%, #FFF8DC 75%, #FFF1F2 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        @keyframes gradientShift {
-            0%   { background-position: 0% 50%; }
-            50%  { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: linear-gradient(rgba(236, 254, 255, 0.8), rgba(236, 254, 255, 0.8)), url('/images/bg-herosection.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         /* ── Floating particles ── */
@@ -276,7 +268,7 @@
 
 <main>
 <!-- ════════════════════ HERO — FULL SCREEN ════════════════════ -->
-<section class="hero-screen hero-gradient-bg relative flex items-center overflow-hidden">
+<section class="hero-screen relative flex items-center overflow-hidden">
     <!-- Decorative blobs -->
     <div class="blob w-[500px] h-[500px] bg-rose-200 top-[-100px] right-[-100px]"></div>
     <div class="blob w-[400px] h-[400px] bg-gold-200 bottom-[-80px] left-[-80px]"></div>

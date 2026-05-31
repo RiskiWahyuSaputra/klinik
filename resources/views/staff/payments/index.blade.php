@@ -4,53 +4,68 @@
 @section('breadcrumb', 'Pembayaran')
 
 @section('content')
-<div class="py-8">
-    <div class="flex justify-between items-center mb-8">
-        <h1 class="page-title">Pembayaran</h1>
-        <span class="text-sm text-gray-400">Pembayaran dicatat melalui halaman appointment</span>
+<div>
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Pembayaran</h1>
+            <p class="page-subtitle">Riwayat pembayaran pasien</p>
+        </div>
+        <span class="text-sm" style="color: var(--text-muted);">Pembayaran dicatat melalui halaman appointment</span>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div class="card overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table class="data-table">
                 <thead>
-                    <tr class="text-left text-sm text-gray-500 border-b border-gray-100">
-                        <th class="px-6 py-4 font-medium">Invoice</th>
-                        <th class="px-6 py-4 font-medium">Pasien</th>
-                        <th class="px-6 py-4 font-medium">Jumlah</th>
-                        <th class="px-6 py-4 font-medium">Metode</th>
-                        <th class="px-6 py-4 font-medium">Status</th>
-                        <th class="px-6 py-4 font-medium">Tanggal</th>
-                        <th class="px-6 py-4 font-medium">Aksi</th>
+                    <tr>
+                        <th>Invoice</th>
+                        <th>Pasien</th>
+                        <th>Jumlah</th>
+                        <th>Metode</th>
+                        <th>Status</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($payments as $payment)
-                    <tr class="border-b border-gray-50 hover:bg-pink-50/50 transition">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">#{{ $payment->invoice_number }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $payment->appointment->patient->user->name ?? '-' }}</td>
-                        <td class="px-6 py-4 text-sm font-medium" style="color: #D4AF37;">Rp {{ number_format($payment->amount, 0, ',', '.') }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ ucfirst($payment->payment_method ?? '-') }}</td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-medium
-                                @if($payment->status == 'pending') bg-yellow-100 text-yellow-700
-                                @elseif($payment->status == 'paid') bg-green-100 text-green-700
-                                @elseif($payment->status == 'cancelled') bg-red-100 text-red-700
-                                @else bg-gray-100 text-gray-700
+                    <tr>
+                        <td data-label="Invoice"><span class="font-medium" style="color: var(--text-heading);">#{{ $payment->invoice_number }}</span></td>
+                        <td data-label="Pasien">
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0" style="background: #fce7f3; color: #db2777;">
+                                    {{ substr($payment->appointment->patient->user->name ?? '?', 0, 1) }}
+                                </div>
+                                <span class="font-medium text-sm" style="color: var(--text-heading);">{{ $payment->appointment->patient->user->name ?? '-' }}</span>
+                            </div>
+                        </td>
+                        <td data-label="Jumlah"><span class="font-medium" style="color: var(--color-gold);">Rp {{ number_format($payment->amount, 0, ',', '.') }}</span></td>
+                        <td data-label="Metode">{{ ucfirst($payment->payment_method ?? '-') }}</td>
+                        <td data-label="Status">
+                            <span class="badge
+                                @if($payment->status == 'pending') badge-amber
+                                @elseif($payment->status == 'paid') badge-green
+                                @elseif($payment->status == 'cancelled') badge-red
+                                @else badge-gray
                                 @endif">
                                 {{ ucfirst($payment->status) }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $payment->created_at->format('d M Y') }}</td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="text-sm font-medium hover:underline" style="color: #D4AF37;">Detail</a>
+                        <td data-label="Tanggal">{{ $payment->created_at->format('d M Y') }}</td>
+                        <td data-label="Aksi">
+                            <a href="#" class="btn btn-outline btn-sm">Detail</a>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="px-6 py-12 text-center text-gray-400">
-                            <p class="text-4xl mb-4">💰</p>
-                            <p>Belum ada pembayaran.</p>
+                        <td colspan="7">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <p class="empty-state-title">Belum ada pembayaran</p>
+                                <p class="empty-state-desc">Riwayat pembayaran akan muncul di sini.</p>
+                            </div>
                         </td>
                     </tr>
                     @endforelse
@@ -59,8 +74,10 @@
         </div>
     </div>
 
-    <div class="mt-6">
+    @if($payments->hasPages())
+    <div class="pagination-wrap">
         {{ $payments->links() }}
     </div>
+    @endif
 </div>
-@endsection
+@endSection

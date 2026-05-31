@@ -304,7 +304,7 @@
 
                 <h1 class="reveal text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-poppins font-extrabold leading-[1.1] text-gray-950 mb-6">
                     Kesehatan Anda,<br>
-                    <span class="bg-gradient-to-r from-gold-600 to-gold-700 bg-clip-text" style="color:white">Prioritas Kami</span>
+                    <span class="bg-gradient-to-r from-gold-600 to-gold-700 bg-clip-text" style="color:#B8860B">Prioritas Kami</span>
                 </h1>
 
                 <p class="reveal text-lg text-gray-800 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">

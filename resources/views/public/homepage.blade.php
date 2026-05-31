@@ -49,7 +49,7 @@
         .hero-screen {
             min-height: 100vh;
             min-height: 100dvh;
-            background: url('/images/bg-herosection.jpg');
+            background: url('/images/bg-hero.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;

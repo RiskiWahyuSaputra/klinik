@@ -145,7 +145,8 @@
 
         /* ── Reveal animations ── */
         .reveal {
-            /* Handled by GSAP */
+            opacity: 0;
+            will-change: transform, opacity, filter;
         }
 
         /* ── Decorative ring ── */
@@ -727,24 +728,45 @@
     gsap.registerPlugin(ScrollTrigger);
 
     // Hero animations
-    gsap.from('.hero-screen .reveal', {
-        opacity: 0, y: 30, duration: 1.2, stagger: 0.1, ease: 'power2.out'
-    });
+    gsap.fromTo('.hero-screen .reveal', 
+        { 
+            opacity: 0, 
+            y: 20, 
+            scale: 0.98, 
+            filter: 'blur(10px)' 
+        },
+        { 
+            opacity: 1, 
+            y: 0, 
+            scale: 1, 
+            filter: 'blur(0px)',
+            duration: 0.8, 
+            stagger: 0.08, 
+            ease: 'expo.out',
+            clearProps: 'all'
+        }
+    );
 
     // Enhanced Section reveals
     document.querySelectorAll('.reveal').forEach((el, index) => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 88%',
-                toggleActions: 'play none none none'
+        gsap.fromTo(el, 
+            { 
+                opacity: 0, 
+                y: 40 
             },
-            opacity: 0,
-            y: 40,
-            duration: 1,
-            ease: 'expo.out',
-            delay: el.classList.contains('card-lift') ? (index % 3) * 0.1 : 0
-        });
+            {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'expo.out',
+                delay: el.classList.contains('card-lift') ? (index % 3) * 0.1 : 0
+            }
+        );
     });
 
     // ── Floating particles in hero ──

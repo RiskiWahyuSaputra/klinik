@@ -73,10 +73,10 @@
 
         /* ── Glass card ── */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
         /* ── Card lift ── */
@@ -93,12 +93,13 @@
             background: linear-gradient(135deg, #D4AF37 0%, #F5D060 50%, #D4AF37 100%);
             background-size: 200% 200%;
             animation: shimmer 3s ease infinite;
-            color: #553E0C;
+            color: #4A3705; /* Darker text for better contrast */
             transition: all 0.3s ease;
         }
         .btn-gold:hover {
             box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
             transform: translateY(-2px);
+            color: #2D2203;
         }
         @keyframes shimmer {
             0%   { background-position: 0% 50%; }
@@ -118,18 +119,20 @@
 
         .btn-outline {
             border: 2px solid #FDA4AF;
-            color: #BE123C;
+            color: #9F1239; /* Darker rose for better contrast */
             transition: all 0.3s ease;
         }
         .btn-outline:hover {
             background: #FFF1F2;
             border-color: #F43F5E;
             transform: translateY(-2px);
+            color: #881337;
         }
 
         /* ── Section title ── */
         .section-title {
             font-family: 'Poppins', sans-serif;
+            color: #1A1A1A; /* High contrast heading */
         }
 
         /* ── Nav transition ── */
@@ -142,13 +145,7 @@
 
         /* ── Reveal animations ── */
         .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        .reveal-visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Handled by GSAP */
         }
 
         /* ── Decorative ring ── */
@@ -296,13 +293,13 @@
                     LAYANAN KESEHATAN PROFESIONAL
                 </div>
 
-                <h1 class="reveal text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-poppins font-extrabold leading-[1.1] text-gray-900 mb-6">
+                <h1 class="reveal text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-poppins font-extrabold leading-[1.1] text-gray-950 mb-6">
                     Kesehatan Anda,<br>
-                    <span class="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">Prioritas Kami</span>
+                    <span class="bg-gradient-to-r from-gold-600 to-gold-700 bg-clip-text text-transparent">Prioritas Kami</span>
                 </h1>
 
-                <p class="reveal text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">
-                    <strong class="text-gray-700">Klinik Utama Mon Cheri</strong> menyediakan layanan kesehatan profesional dengan sentuhan kasih sayang. Booking appointment secara online dengan mudah dan cepat.
+                <p class="reveal text-lg text-gray-800 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">
+                    <strong class="text-gray-900 font-bold">Klinik Utama Mon Cheri</strong> menyediakan layanan kesehatan profesional dengan sentuhan kasih sayang. Booking appointment secara online dengan mudah dan cepat.
                 </p>
 
                 <div class="reveal flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -585,10 +582,10 @@
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div class="reveal">
-            <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4">
-                Siap Memulai <span class="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">Perawatan Kesehatan</span> Anda?
+            <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-950 mb-4">
+                Siap Memulai <span class="bg-gradient-to-r from-gold-700 to-gold-800 bg-clip-text text-transparent">Perawatan Kesehatan</span> Anda?
             </h2>
-            <p class="text-gray-600 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">Hubungi kami atau buat appointment secara online. Kami siap melayani Anda dengan sepenuh hati.</p>
+            <p class="text-gray-800 text-lg mb-10 max-w-2xl mx-auto leading-relaxed font-medium">Hubungi kami atau buat appointment secara online. Kami siap melayani Anda dengan sepenuh hati.</p>
         </div>
 
         <div class="reveal flex flex-col sm:flex-row justify-center gap-4 mb-12">
@@ -731,16 +728,22 @@
 
     // Hero animations
     gsap.from('.hero-screen .reveal', {
-        opacity: 0, y: 50, duration: 1, stagger: 0.15, ease: 'power3.out'
+        opacity: 0, y: 30, duration: 1.2, stagger: 0.1, ease: 'power2.out'
     });
 
-    // Section reveals
-    document.querySelectorAll('.reveal').forEach(el => {
-        ScrollTrigger.create({
-            trigger: el,
-            start: 'top 85%',
-            onEnter: () => el.classList.add('reveal-visible'),
-            once: true
+    // Enhanced Section reveals
+    document.querySelectorAll('.reveal').forEach((el, index) => {
+        gsap.from(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            ease: 'expo.out',
+            delay: el.classList.contains('card-lift') ? (index % 3) * 0.1 : 0
         });
     });
 

@@ -18,7 +18,7 @@
             --color-pink-dark: #FF69B4;
             --color-gold: #D4AF37;
             --color-gold-light: #F0E68C;
-            --sidebar-bg: #0f0d2e;
+            --sidebar-bg: #1a0f1c;
             --sidebar-hover: rgba(255, 182, 193, 0.08);
             --sidebar-active: rgba(255, 182, 193, 0.15);
         }
@@ -47,7 +47,7 @@
             left: 0;
             width: var(--sidebar-width);
             height: 100vh;
-            background: linear-gradient(180deg, #0f0d2e 0%, #1a1744 100%);
+            background: linear-gradient(180deg, #1a0f1c 0%, #2d1a28 100%);
             color: #fff;
             z-index: 1000;
             display: flex;
@@ -786,6 +786,42 @@
             font-weight: 700;
             color: #1a1a2e;
             letter-spacing: -0.3px;
+        }
+
+        /* ─── Empty State ─── */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 20px;
+            text-align: center;
+        }
+
+        .empty-state-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: #f8f9fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+
+        .empty-state-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .empty-state-desc {
+            font-size: 13px;
+            color: #8e8ea0;
+            max-width: 280px;
         }
 
         /* ─── Quick Menu ─── */

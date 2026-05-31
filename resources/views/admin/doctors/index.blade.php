@@ -39,20 +39,27 @@
                     <td data-label="Layanan" style="max-width: 160px; white-space: normal;">{{ $doctor->services->pluck('name')->implode(', ') ?: '-' }}</td>
                     <td data-label="Aksi">
                         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                            <a href="{{ route('admin.doctors.edit', $doctor) }}" class="btn-sm btn-secondary" style="font-size: 11px; padding: 5px 12px;">Edit</a>
-                            <a href="{{ route('admin.schedules', $doctor) }}" class="btn-sm btn-secondary" style="font-size: 11px; padding: 5px 12px; color: #D4AF37;">Jadwal</a>
+                            <a href="{{ route('admin.doctors.edit', $doctor) }}" class="btn-sm btn-secondary">Edit</a>
+                            <a href="{{ route('admin.schedules', $doctor) }}" class="btn-sm btn-secondary" style="color: #D4AF37;">Jadwal</a>
                             <form method="POST" action="{{ route('admin.doctors.destroy', $doctor) }}" onsubmit="return confirm('Hapus dokter ini?')">
                                 @csrf @method('DELETE')
-                                <button type="submit" class="btn-sm btn-danger" style="font-size: 11px;">Hapus</button>
+                                <button type="submit" class="btn-sm btn-danger">Hapus</button>
                             </form>
                         </div>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="6" style="text-align: center; padding: 48px 20px; color: #8e8ea0;">
-                        <p style="font-size: 36px; margin-bottom: 12px;">👨‍⚕️</p>
-                        <p>Belum ada dokter.</p>
+                    <td colspan="6">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                                </svg>
+                            </div>
+                            <p class="empty-state-title">Belum ada dokter</p>
+                            <p class="empty-state-desc">Tambah dokter baru untuk mulai mengelola jadwal.</p>
+                        </div>
                     </td>
                 </tr>
                 @endforelse

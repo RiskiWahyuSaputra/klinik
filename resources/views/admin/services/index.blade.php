@@ -37,19 +37,28 @@
                     <td data-label="Durasi">{{ $service->duration }} menit</td>
                     <td data-label="Aksi">
                         <div style="display: flex; gap: 8px;">
-                            <a href="{{ route('admin.services.edit', $service) }}" class="btn-sm btn-secondary" style="font-size: 11px; padding: 5px 12px;">Edit</a>
+                            <a href="{{ route('admin.services.edit', $service) }}" class="btn-sm btn-secondary">Edit</a>
                             <form method="POST" action="{{ route('admin.services.destroy', $service) }}" onsubmit="return confirm('Hapus layanan ini?')">
                                 @csrf @method('DELETE')
-                                <button type="submit" class="btn-sm btn-danger" style="font-size: 11px;">Hapus</button>
+                                <button type="submit" class="btn-sm btn-danger">Hapus</button>
                             </form>
                         </div>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" style="text-align: center; padding: 48px 20px; color: #8e8ea0;">
-                        <p style="font-size: 36px; margin-bottom: 12px;">🩺</p>
-                        <p>Belum ada layanan.</p>
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                            <p class="empty-state-title">Belum ada layanan</p>
+                            <p class="empty-state-desc">Tambah layanan baru untuk ditawarkan ke pasien.</p>
+                        </div>
                     </td>
                 </tr>
                 @endforelse

@@ -41,19 +41,29 @@
                     <td data-label="Tanggal">{{ $article->created_at->format('d M Y') }}</td>
                     <td data-label="Aksi">
                         <div style="display: flex; gap: 8px;">
-                            <a href="{{ route('admin.articles.edit', $article) }}" class="btn-sm btn-secondary" style="font-size: 11px; padding: 5px 12px;">Edit</a>
+                            <a href="{{ route('admin.articles.edit', $article) }}" class="btn-sm btn-secondary">Edit</a>
                             <form method="POST" action="{{ route('admin.articles.destroy', $article) }}" onsubmit="return confirm('Hapus artikel ini?')">
                                 @csrf @method('DELETE')
-                                <button type="submit" class="btn-sm btn-danger" style="font-size: 11px;">Hapus</button>
+                                <button type="submit" class="btn-sm btn-danger">Hapus</button>
                             </form>
                         </div>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" style="text-align: center; padding: 48px 20px; color: #8e8ea0;">
-                        <p style="font-size: 36px; margin-bottom: 12px;">📝</p>
-                        <p>Belum ada artikel.</p>
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                            </div>
+                            <p class="empty-state-title">Belum ada artikel</p>
+                            <p class="empty-state-desc">Buat artikel baru untuk informasi kesehatan.</p>
+                        </div>
                     </td>
                 </tr>
                 @endforelse

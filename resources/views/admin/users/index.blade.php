@@ -51,7 +51,7 @@
                     <td data-label="Aksi">
                         <form method="POST" action="{{ route('admin.users.toggle-status', $user) }}">
                             @csrf @method('PUT')
-                            <button type="submit" class="btn-sm {{ $user->is_active ? 'btn-danger' : 'btn-primary' }}" style="font-size: 11px;">
+                            <button type="submit" class="btn-sm {{ $user->is_active ? 'btn-danger' : 'btn-primary' }}">
                                 {{ $user->is_active ? 'Nonaktifkan' : 'Aktifkan' }}
                             </button>
                         </form>
@@ -59,9 +59,19 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" style="text-align: center; padding: 48px 20px; color: #8e8ea0;">
-                        <p style="font-size: 36px; margin-bottom: 12px;">👥</p>
-                        <p>Tidak ada pengguna.</p>
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <p class="empty-state-title">Tidak ada pengguna</p>
+                            <p class="empty-state-desc">Belum ada pengguna yang terdaftar.</p>
+                        </div>
                     </td>
                 </tr>
                 @endforelse

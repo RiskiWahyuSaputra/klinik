@@ -10,7 +10,6 @@
 </div>
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
-
     <div class="admin-card overflow-hidden">
         <div style="padding: 20px 24px; border-bottom: 1px solid #eef0f5;">
             <h2 style="font-size: 16px; font-weight: 600; color: #1a1a2e;">Jadwal Tersedia</h2>
@@ -41,15 +40,25 @@
                         <td data-label="Aksi">
                             <form method="POST" action="{{ route('admin.schedules.destroy', $schedule) }}" onsubmit="return confirm('Hapus jadwal ini?')">
                                 @csrf @method('DELETE')
-                                <button type="submit" class="btn-sm btn-danger" style="font-size: 11px;">Hapus</button>
+                                <button type="submit" class="btn-sm btn-danger">Hapus</button>
                             </form>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" style="text-align: center; padding: 48px 20px; color: #8e8ea0;">
-                            <p style="font-size: 36px; margin-bottom: 12px;">🗓️</p>
-                            <p>Belum ada jadwal.</p>
+                        <td colspan="5">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                </div>
+                                <p class="empty-state-title">Belum ada jadwal</p>
+                                <p class="empty-state-desc">Tambah jadwal baru untuk dokter.</p>
+                            </div>
                         </td>
                     </tr>
                     @endforelse

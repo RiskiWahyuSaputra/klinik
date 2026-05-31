@@ -317,42 +317,7 @@
             </div>
 
             <!-- Right: Visual -->
-            <div class="flex-1 flex justify-center lg:justify-end relative">
-                <!-- Hero image card -->
-                <div class="relative w-72 sm:w-80 md:w-[360px] lg:w-[400px]">
-                    <div class="glass-card rounded-3xl shadow-2xl shadow-rose-200/30 overflow-hidden">
-                        <div class="h-64 sm:h-72 bg-gradient-to-br from-rose-100 via-rose-50 to-gold-50 flex items-center justify-center relative overflow-hidden">
-                            <!-- Medical cross icon large -->
-                            <svg class="w-32 h-32 text-rose-300/60" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
-                            </svg>
-                            <!-- Gold accent -->
-                            <div class="absolute top-4 right-4 w-12 h-12 bg-gold-400/20 rounded-2xl"></div>
-                            <div class="absolute bottom-6 left-4 w-8 h-8 bg-rose-400/20 rounded-xl"></div>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="icon-box bg-rose-100">
-                                    <svg class="w-6 h-6 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-gray-800">Pelayanan Terpercaya</p>
-                                    <p class="text-xs text-gray-500">Tenaga medis bersertifikat</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="icon-box bg-gold-100">
-                                    <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-gray-800">Buka Setiap Hari</p>
-                                    <p class="text-xs text-gray-500">Senin - Sabtu, 08:00-20:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 

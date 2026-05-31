@@ -128,11 +128,34 @@
         }
 
         /* ── Nav transition ── */
-        .nav-default { background: transparent; transition: all 0.4s ease; }
+        #navbar {
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            left: 50% !important;
+            transform: translateX(-50%);
+            will-change: transform, top, width, background, padding;
+        }
+        .nav-default { 
+            background: transparent; 
+            padding-top: 10px;
+            top: 0;
+            width: 100%;
+        }
         .nav-scrolled {
-            background: rgba(255, 255, 255, 0.97);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
-            border-bottom: 1px solid rgba(253, 164, 175, 0.3);
+            top: 24px !important;
+            transform: translateX(-50%) scale(0.98);
+            width: 92%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 999px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            padding: 0 24px;
+        }
+        .nav-scrolled .h-16, .nav-scrolled .lg:h-20 {
+            height: 64px;
+            transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* ── Reveal animations ── */
@@ -209,7 +232,7 @@
 <body class="bg-white text-gray-800 antialiased">
 
 <!-- ════════════════════ NAVIGATION ════════════════════ -->
-<nav id="navbar" class="nav-default fixed top-0 left-0 right-0 z-50">
+<nav id="navbar" class="nav-default fixed z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 lg:h-20">
             <!-- Logo -->

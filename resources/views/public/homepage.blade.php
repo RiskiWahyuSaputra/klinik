@@ -110,8 +110,8 @@
         }
 
         .btn-outline {
-            border: 2px solid #FDA4AF;
-            color: #9F1239; /* Darker rose for better contrast */
+            border: 2px solid white;
+            color: white; /* Darker rose for better contrast */
             transition: all 0.3s ease;
         }
         .btn-outline:hover {

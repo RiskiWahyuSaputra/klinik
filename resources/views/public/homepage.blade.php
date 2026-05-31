@@ -21,7 +21,7 @@
                             50: '#FFF1F2', 100: '#FFE4E6', 200: '#FECDD3',
                             300: '#FDA4AF', 400: '#FB7185', 500: '#F43F5E',
                             600: '#E11D48', 700: '#BE123C', 800: '#9F1239',
-                            900: '#881337', 950: '#4C0519',
+                            900: '#881337', 950: '#4C0519', 1000: '#000000',
                         },
                         gold: {
                             50: '#FFFBEB', 100: '#FEF3C7', 200: '#FDE68A',
@@ -233,7 +233,7 @@
                     @auth
                         <a href="{{ route('dashboard') }}" class="btn-rose px-5 py-2.5 rounded-xl text-sm font-semibold text-white shadow-md shadow-rose-100">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm font-semibold text-rose-500 hover:text-rose-600 transition-colors">Masuk</a>
+                        <a href="{{ route('login') }}" class="text-sm font-semibold text-rose-1000 hover:text-rose-900 transition-colors">Masuk</a>
                         <a href="{{ route('register') }}" class="btn-gold px-5 py-2.5 rounded-xl text-sm font-bold shadow-md">Daftar</a>
                     @endauth
                 </div>

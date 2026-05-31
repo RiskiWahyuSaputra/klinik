@@ -49,7 +49,7 @@
         .hero-screen {
             min-height: 100vh;
             min-height: 100dvh;
-            background: linear-gradient(rgba(236, 254, 255, 0.8), rgba(236, 254, 255, 0.8)), url('/images/bg-hero.jpg');
+            background: url('/images/bg-herosection.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -269,13 +269,6 @@
 <main>
 <!-- ════════════════════ HERO — FULL SCREEN ════════════════════ -->
 <section class="hero-screen relative flex items-center overflow-hidden">
-    <!-- Decorative blobs -->
-    <div class="blob w-[500px] h-[500px] bg-rose-200 top-[-100px] right-[-100px]"></div>
-    <div class="blob w-[400px] h-[400px] bg-gold-200 bottom-[-80px] left-[-80px]"></div>
-
-    <!-- Particles -->
-    <div id="hero-particles" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 pt-20 lg:pt-0">
         <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <!-- Left: Text -->
@@ -325,10 +318,6 @@
 
             <!-- Right: Visual -->
             <div class="flex-1 flex justify-center lg:justify-end relative">
-                <!-- Decorative ring -->
-                <div class="deco-ring absolute w-72 h-72 sm:w-80 sm:h-80 md:w-[420px] md:h-[420px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                <div class="deco-ring absolute w-64 h-64 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="border-color: rgba(244,63,94,0.1);"></div>
-
                 <!-- Hero image card -->
                 <div class="relative w-72 sm:w-80 md:w-[360px] lg:w-[400px]">
                     <div class="glass-card rounded-3xl shadow-2xl shadow-rose-200/30 overflow-hidden">

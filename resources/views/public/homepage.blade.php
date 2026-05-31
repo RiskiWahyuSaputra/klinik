@@ -421,9 +421,7 @@
 </section>
 
 <!-- ════════════════════ DOCTORS ════════════════════ -->
-<section class="py-20 lg:py-28 relative overflow-hidden">
-    <div class="blob w-[500px] h-[500px] bg-gold-100 top-[-100px] right-[-100px]"></div>
-
+<section class="py-20 lg:py-28 relative overflow-hidden bg-cover bg-center bg-no-bound" style="background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/images/bg.jpg'); background-attachment: fixed;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <div class="reveal inline-flex items-center gap-2 px-4 py-2 bg-rose-50 rounded-full text-xs font-bold text-rose-500 mb-4">

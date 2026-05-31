@@ -4,20 +4,24 @@
 @section('breadcrumb', 'Appointment / Baru')
 
 @section('content')
-<div class="py-8">
+<div>
     <div class="max-w-3xl mx-auto">
-        <h1 class="page-title">Buat Appointment</h1>
-        <p class="text-gray-500 mb-8">Isi data di bawah untuk booking appointment</p>
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Buat Appointment</h1>
+                <p class="page-subtitle">Isi data di bawah untuk booking appointment</p>
+            </div>
+        </div>
 
-        <div class="admin-card p-8">
+        <div class="card p-6">
             <form method="POST" action="{{ route('appointments.store') }}" id="appointmentForm">
                 @csrf
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Dokter</label>
+                        <label class="label">Dokter</label>
                         <select name="doctor_id" id="doctor_id" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('doctor_id') border-red-300 @enderror">
+                            class="input select @error('doctor_id') border-red-300 @enderror">
                             <option value="">Pilih Dokter</option>
                             @foreach($doctors as $doctor)
                             <option value="{{ $doctor->id }}" @selected(old('doctor_id') == $doctor->id)>
@@ -25,13 +29,13 @@
                             </option>
                             @endforeach
                         </select>
-                        @error('doctor_id') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        @error('doctor_id') <p class="text-xs mt-1" style="color: var(--danger);">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Layanan</label>
+                        <label class="label">Layanan</label>
                         <select name="service_id" id="service_id" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('service_id') border-red-300 @enderror">
+                            class="input select @error('service_id') border-red-300 @enderror">
                             <option value="">Pilih Layanan</option>
                             @foreach($services as $service)
                             <option value="{{ $service->id }}" data-price="{{ $service->price }}" @selected(old('service_id') == $service->id)>
@@ -39,43 +43,43 @@
                             </option>
                             @endforeach
                         </select>
-                        @error('service_id') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        @error('service_id') <p class="text-xs mt-1" style="color: var(--danger);">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Tanggal</label>
+                        <label class="label">Tanggal</label>
                         <input type="date" name="appointment_date" id="appointment_date" value="{{ old('appointment_date') }}" required
                             min="{{ date('Y-m-d') }}"
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('appointment_date') border-red-300 @enderror">
-                        @error('appointment_date') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                            class="input @error('appointment_date') border-red-300 @enderror">
+                        @error('appointment_date') <p class="text-xs mt-1" style="color: var(--danger);">{{ $message }}</p> @enderror
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Jam</label>
+                        <label class="label">Jam</label>
                         <select name="appointment_time" id="appointment_time" required
-                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition @error('appointment_time') border-red-300 @enderror">
+                            class="input select @error('appointment_time') border-red-300 @enderror">
                             <option value="">Pilih Jam</option>
                         </select>
-                        @error('appointment_time') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                        @error('appointment_time') <p class="text-xs mt-1" style="color: var(--danger);">{{ $message }}</p> @enderror
                     </div>
                 </div>
 
-                <div class="mt-6">
-                    <label class="block text-gray-700 text-sm font-medium mb-2">Keluhan</label>
+                <div class="mt-5">
+                    <label class="label">Keluhan</label>
                     <textarea name="complaint" rows="4" required
-                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-pink-300 focus:ring-2 focus:ring-pink-100 outline-none transition resize-none @error('complaint') border-red-300 @enderror"
+                        class="input resize-none @error('complaint') border-red-300 @enderror"
+                        style="min-height: 90px;"
                         placeholder="Jelaskan keluhan Anda...">{{ old('complaint') }}</textarea>
-                    @error('complaint') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                    @error('complaint') <p class="text-xs mt-1" style="color: var(--danger);">{{ $message }}</p> @enderror
                 </div>
 
-                <div class="mt-8 flex items-center justify-between">
+                <div class="mt-6 flex items-center justify-between">
                     <div>
-                        <p class="text-sm text-gray-500">Estimasi Biaya:</p>
-                        <p class="text-2xl font-bold" id="priceDisplay" style="color: #D4AF37;">Rp 0</p>
+                        <p class="text-sm" style="color: var(--text-muted);">Estimasi Biaya:</p>
+                        <p class="text-xl font-bold mt-1" id="priceDisplay" style="color: var(--color-gold);">Rp 0</p>
                     </div>
-                    <button type="submit"
-                        class="text-white px-8 py-3 rounded-xl font-semibold text-lg transition shadow-md hover:shadow-lg"
-                        style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
+                    <button type="submit" class="btn btn-primary" style="padding: 10px 28px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         Buat Appointment
                     </button>
                 </div>
@@ -83,7 +87,7 @@
         </div>
     </div>
 </div>
-@endsection
+@endSection
 
 @push('scripts')
 <script>

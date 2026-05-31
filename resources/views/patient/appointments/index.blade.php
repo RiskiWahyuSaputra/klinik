@@ -4,70 +4,75 @@
 @section('breadcrumb', 'Appointment')
 
 @section('content')
-<div class="py-8">
-    <div class="flex justify-between items-center mb-8">
+<div>
+    <div class="page-header">
         <div>
             <h1 class="page-title">Riwayat Appointment</h1>
-            <p class="text-gray-500 mt-1">Daftar appointment Anda</p>
+            <p class="page-subtitle">Daftar appointment Anda</p>
         </div>
-        <a href="{{ route('appointments.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
-            + Buat Appointment
+        <a href="{{ route('appointments.create') }}" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Buat Appointment
         </a>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div class="card overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table class="data-table">
                 <thead>
-                    <tr class="text-left text-sm text-gray-500 border-b border-gray-100">
-                        <th class="px-6 py-4 font-medium">No. Appointment</th>
-                        <th class="px-6 py-4 font-medium">Tanggal</th>
-                        <th class="px-6 py-4 font-medium">Jam</th>
-                        <th class="px-6 py-4 font-medium">Dokter</th>
-                        <th class="px-6 py-4 font-medium">Layanan</th>
-                        <th class="px-6 py-4 font-medium">Status</th>
-                        <th class="px-6 py-4 font-medium">Aksi</th>
+                    <tr>
+                        <th>No. Appointment</th>
+                        <th>Tanggal</th>
+                        <th>Jam</th>
+                        <th>Dokter</th>
+                        <th>Layanan</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($appointments as $appointment)
-                    <tr class="border-b border-gray-50 hover:bg-pink-50/50 transition">
-                        <td class="px-6 py-4 text-sm font-medium text-gray-800">#{{ $appointment->appointment_number }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $appointment->appointment_date->format('d M Y') }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $appointment->appointment_time->format('H:i') }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">dr. {{ $appointment->doctor->user->name }}</td>
-                        <td class="px-6 py-4 text-sm text-gray-600">{{ $appointment->service->name ?? '-' }}</td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-medium
-                                @if($appointment->status == 'pending') bg-yellow-100 text-yellow-700
-                                @elseif($appointment->status == 'confirmed') bg-blue-100 text-blue-700
-                                @elseif($appointment->status == 'checked_in') bg-indigo-100 text-indigo-700
-                                @elseif($appointment->status == 'in_progress') bg-purple-100 text-purple-700
-                                @elseif($appointment->status == 'completed') bg-green-100 text-green-700
-                                @elseif($appointment->status == 'cancelled') bg-red-100 text-red-700
+                    <tr>
+                        <td data-label="No."><span class="font-medium" style="color: var(--text-heading);">#{{ $appointment->appointment_number }}</span></td>
+                        <td data-label="Tanggal">{{ $appointment->appointment_date->format('d M Y') }}</td>
+                        <td data-label="Jam">{{ $appointment->appointment_time->format('H:i') }}</td>
+                        <td data-label="Dokter">dr. {{ $appointment->doctor->user->name }}</td>
+                        <td data-label="Layanan">{{ $appointment->service->name ?? '-' }}</td>
+                        <td data-label="Status">
+                            <span class="badge
+                                @if($appointment->status == 'pending') badge-amber
+                                @elseif($appointment->status == 'confirmed') badge-blue
+                                @elseif($appointment->status == 'checked_in') badge-pink
+                                @elseif($appointment->status == 'in_progress') badge-purple
+                                @elseif($appointment->status == 'completed') badge-green
+                                @elseif($appointment->status == 'cancelled') badge-red
                                 @endif">
                                 {{ ucfirst(str_replace('_', ' ', $appointment->status)) }}
                             </span>
                         </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('appointments.show', $appointment) }}" class="text-sm font-medium hover:underline" style="color: #D4AF37;">Detail</a>
-                            @if($appointment->status == 'pending')
-                                <form method="POST" action="{{ route('appointments.cancel', $appointment) }}" class="inline ml-2" onsubmit="return confirm('Batalkan appointment ini?')">
-                                    @csrf
-                                    @method('PUT')
-                                    <button type="submit" class="text-sm text-red-500 hover:underline">Batal</button>
+                        <td data-label="Aksi">
+                            <div class="flex gap-2">
+                                <a href="{{ route('appointments.show', $appointment) }}" class="btn btn-outline btn-sm">Detail</a>
+                                @if($appointment->status == 'pending')
+                                <form method="POST" action="{{ route('appointments.cancel', $appointment) }}" onsubmit="return confirm('Batalkan appointment ini?')">
+                                    @csrf @method('PUT')
+                                    <button type="submit" class="btn btn-sm" style="background: #FEE2E2; color: var(--danger);">Batal</button>
                                 </form>
-                            @endif
+                                @endif
+                            </div>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7" class="px-6 py-12 text-center text-gray-400">
-                            <p class="text-4xl mb-4">📅</p>
-                            <p>Belum ada appointment.</p>
-                            <a href="{{ route('appointments.create') }}" class="inline-block mt-4 text-white px-6 py-2 rounded-lg font-medium transition shadow" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
-                                Buat Appointment
-                            </a>
+                        <td colspan="7">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                </div>
+                                <p class="empty-state-title">Belum ada appointment</p>
+                                <p class="empty-state-desc">Buat appointment baru untuk memulai.</p>
+                                <a href="{{ route('appointments.create') }}" class="btn btn-primary mt-4">Buat Appointment</a>
+                            </div>
                         </td>
                     </tr>
                     @endforelse
@@ -76,8 +81,10 @@
         </div>
     </div>
 
-    <div class="mt-6">
+    @if($appointments->hasPages())
+    <div class="pagination-wrap">
         {{ $appointments->links() }}
     </div>
+    @endif
 </div>
-@endsection
+@endSection

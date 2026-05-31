@@ -322,14 +322,7 @@
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 scroll-indicator">
-        <div class="flex flex-col items-center gap-2 cursor-pointer" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-            <span class="text-gray-400 text-[10px] uppercase tracking-[0.2em] font-medium">Scroll</span>
-            <div class="w-6 h-10 rounded-full border-2 border-gray-300 flex items-start justify-center p-1.5">
-                <div class="w-1.5 h-3 bg-rose-400 rounded-full"></div>
-            </div>
-        </div>
-    </div>
+    
 </section>
 
 <!-- ════════════════════ TRUST STRIP ════════════════════ -->

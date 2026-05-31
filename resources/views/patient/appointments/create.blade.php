@@ -1,14 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.patient')
 
 @section('title', 'Buat Appointment')
+@section('breadcrumb', 'Appointment / Baru')
 
 @section('content')
 <div class="py-8">
     <div class="max-w-3xl mx-auto">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-2">Buat Appointment</h1>
+        <h1 class="page-title">Buat Appointment</h1>
         <p class="text-gray-500 mb-8">Isi data di bawah untuk booking appointment</p>
 
-        <div class="bg-white rounded-2xl shadow-md p-8">
+        <div class="admin-card p-8">
             <form method="POST" action="{{ route('appointments.store') }}" id="appointmentForm">
                 @csrf
 

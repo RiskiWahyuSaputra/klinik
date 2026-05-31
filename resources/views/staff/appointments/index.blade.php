@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.staff')
 
 @section('title', 'Kelola Appointment')
+@section('breadcrumb', 'Appointment')
 
 @section('content')
 <div class="py-8">
     <div class="flex justify-between items-center mb-8">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800">Kelola Appointment</h1>
+        <h1 class="page-title">Kelola Appointment</h1>
         <a href="{{ route('appointments.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
             + Appointment Baru
         </a>

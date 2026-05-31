@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.patient')
 
 @section('title', 'Profil Saya')
+@section('breadcrumb', 'Profil')
 
 @section('content')
 <div class="py-8">
-    <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-8">Profil Saya</h1>
+    <h1 class="page-title">Profil Saya</h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div class="bg-white rounded-2xl shadow-md p-6">

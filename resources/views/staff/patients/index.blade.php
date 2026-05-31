@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.staff')
 
 @section('title', 'Pasien')
+@section('breadcrumb', 'Pasien')
 
 @section('content')
 <div class="py-8">
     <div class="flex justify-between items-center mb-8">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800">Daftar Pasien</h1>
+        <h1 class="page-title">Daftar Pasien</h1>
         <a href="{{ route('staff.patients.create') }}" class="text-white px-5 py-3 rounded-xl font-medium transition shadow-md hover:shadow-lg" style="background: linear-gradient(135deg, #FFB6C1, #FF69B4);">
             + Pasien Baru
         </a>

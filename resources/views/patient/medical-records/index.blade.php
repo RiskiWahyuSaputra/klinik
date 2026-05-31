@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.patient')
 
 @section('title', 'Rekam Medis')
+@section('breadcrumb', 'Rekam Medis')
 
 @section('content')
 <div class="py-8">
-    <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-2">Rekam Medis</h1>
+    <h1 class="page-title">Rekam Medis</h1>
     <p class="text-gray-500 mb-8">Riwayat rekam medis Anda</p>
 
     <div class="bg-white rounded-2xl shadow-md overflow-hidden">

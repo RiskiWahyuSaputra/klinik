@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.doctor')
 
 @section('title', 'Rekam Medis')
+@section('breadcrumb', 'Rekam Medis')
 
 @section('content')
-<div class="bg-white rounded-2xl shadow-md p-6">
+<div class="admin-card p-6">
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Rekam Medis Pasien</h2>
+        <h2 class="text-xl font-semibold text-gray-800">Rekam Medis Pasien</h2>
     </div>
 
     @if($records->isEmpty())
@@ -15,32 +16,30 @@
         </div>
     @else
         <div class="overflow-x-auto">
-            <table class="w-full">
+            <table class="admin-table">
                 <thead>
-                    <tr class="text-left text-sm text-gray-500 border-b">
-                        <th class="pb-3 font-medium">Tanggal</th>
-                        <th class="pb-3 font-medium">Pasien</th>
-                        <th class="pb-3 font-medium">Diagnosis</th>
-                        <th class="pb-3 font-medium">Tindakan</th>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Pasien</th>
+                        <th>Diagnosis</th>
+                        <th>Tindakan</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($records as $record)
-                    <tr class="border-b border-gray-50 hover:bg-pink-50/50">
-                        <td class="py-3 text-sm text-gray-600">{{ $record->created_at->format('d/m/Y') }}</td>
-                        <td class="py-3">
-                            <span class="font-medium text-gray-800">{{ $record->patient->user->name ?? '-' }}</span>
-                        </td>
-                        <td class="py-3 text-sm text-gray-600 max-w-xs truncate">{{ $record->diagnosis ?? '-' }}</td>
-                        <td class="py-3">
-                            <a href="{{ route('medical-records.show', $record) }}" class="text-pink-500 hover:text-pink-600 text-sm font-medium">Detail</a>
+                    <tr>
+                        <td data-label="Tanggal">{{ $record->created_at->format('d/m/Y') }}</td>
+                        <td data-label="Pasien">{{ $record->patient->user->name ?? '-' }}</td>
+                        <td data-label="Diagnosis" class="max-w-xs truncate">{{ $record->diagnosis ?? '-' }}</td>
+                        <td data-label="Tindakan">
+                            <a href="{{ route('medical-records.show', $record) }}" class="btn-primary btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div class="mt-4">
+        <div class="pagination-wrap">
             {{ $records->links() }}
         </div>
     @endif

@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.doctor')
 
 @section('title', 'Input Rekam Medis')
+@section('breadcrumb', 'Rekam Medis / Baru')
 
 @section('content')
 <div class="py-8">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-2">Input Rekam Medis</h1>
+        <h1 class="page-title">Input Rekam Medis</h1>
         <p class="text-gray-500 mb-8">
             Pasien: <strong>{{ $appointment->patient->user->name }}</strong> |
             Layanan: <strong>{{ $appointment->service->name ?? '-' }}</strong> |
@@ -16,8 +17,8 @@
             @csrf
             <input type="hidden" name="appointment_id" value="{{ $appointment->id }}">
 
-            <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Tanda Vital</h2>
+            <div class="admin-card p-6 mb-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Tanda Vital</h2>
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                     <div>
                         <label class="block text-gray-700 text-sm font-medium mb-2">Tekanan Darah</label>
@@ -47,8 +48,8 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Diagnosis & Tindakan</h2>
+            <div class="admin-card p-6 mb-6">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">Diagnosis & Tindakan</h2>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-medium mb-2">Diagnosis</label>
                     <textarea name="diagnosis" rows="4" required
@@ -67,9 +68,9 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <div class="admin-card p-6 mb-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-semibold text-gray-800">Resep Obat</h2>
+                    <h2 class="text-lg font-semibold text-gray-800">Resep Obat</h2>
                     <button type="button" id="addPrescription"
                         class="text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow"
                         style="background: linear-gradient(135deg, #D4AF37, #B8860B);">

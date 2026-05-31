@@ -1,13 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.staff')
 
 @section('title', 'Pembayaran Baru')
+@section('breadcrumb', 'Pembayaran / Baru')
 
 @section('content')
 <div class="py-8">
     <div class="max-w-2xl mx-auto">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800 mb-8">Catat Pembayaran</h1>
+        <h1 class="page-title">Catat Pembayaran</h1>
 
-        <div class="bg-white rounded-2xl shadow-md p-8">
+        <div class="admin-card p-8">
             <form method="POST" action="{{ route('staff.payments.store') }}">
                 @csrf
 

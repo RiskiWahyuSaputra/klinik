@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.staff')
 
 @section('title', 'Pembayaran')
+@section('breadcrumb', 'Pembayaran')
 
 @section('content')
 <div class="py-8">
     <div class="flex justify-between items-center mb-8">
-        <h1 class="text-3xl font-bold font-[Poppins] text-gray-800">Pembayaran</h1>
+        <h1 class="page-title">Pembayaran</h1>
         <span class="text-sm text-gray-400">Pembayaran dicatat melalui halaman appointment</span>
     </div>
 

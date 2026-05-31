@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --sidebar-width: 280px;
@@ -30,7 +30,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: #f8f9fc;
             min-height: 100vh;
             display: flex;
@@ -534,8 +534,9 @@
 
         .stat-card:nth-child(1)::before { background: linear-gradient(90deg, #FFB6C1, #FF69B4); }
         .stat-card:nth-child(2)::before { background: linear-gradient(90deg, #D4AF37, #F0E68C); }
-        .stat-card:nth-child(3)::before { background: linear-gradient(90deg, #818CF8, #6366F1); }
-        .stat-card:nth-child(4)::before { background: linear-gradient(90deg, #34D399, #10B981); }
+        .stat-card:nth-child(3)::before { background: linear-gradient(90deg, #FFB6C1, #D4AF37); }
+        .stat-card:nth-child(4)::before { background: linear-gradient(90deg, #F0E68C, #D4AF37); }
+        .stat-card:nth-child(5)::before { background: linear-gradient(90deg, #FFB6C1, #FF69B4); }
 
         .stat-card:hover {
             transform: translateY(-3px);
@@ -554,7 +555,7 @@
 
         .stat-card-icon.pink { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
         .stat-card-icon.gold { background: linear-gradient(135deg, #fef9c3, #fef08a); }
-        .stat-card-icon.indigo { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+        .stat-card-icon.rose { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
         .stat-card-icon.green { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
 
         /* ─── Table Styles ─── */
@@ -585,7 +586,7 @@
         }
 
         .admin-table tbody tr:hover {
-            background: #f8f9fc;
+            background: #fdf2f8;
         }
 
         .admin-table tbody td {
@@ -695,7 +696,7 @@
             background: #fff;
             outline: none;
             transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         .form-input:focus {

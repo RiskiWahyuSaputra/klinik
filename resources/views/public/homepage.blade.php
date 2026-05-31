@@ -687,28 +687,31 @@
     // ── GSAP ScrollTrigger ──
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero animations
+    // Hero animations with re-trigger on scroll to top
     gsap.fromTo('.hero-screen .reveal', 
         { 
             opacity: 0, 
-            y: 20, 
-            scale: 0.98, 
-            filter: 'blur(10px)' 
+            y: 20
         },
         { 
+            scrollTrigger: {
+                trigger: '.hero-screen',
+                start: 'top 50%',
+                toggleActions: 'play none none reverse'
+            },
             opacity: 1, 
             y: 0, 
-            scale: 1, 
-            filter: 'blur(0px)',
             duration: 0.8, 
-            stagger: 0.08, 
-            ease: 'expo.out',
-            clearProps: 'all'
+            stagger: 0.1, 
+            ease: 'expo.out'
         }
     );
 
-    // Enhanced Section reveals
+    // Enhanced Section reveals with repeatable animation
     document.querySelectorAll('.reveal').forEach((el, index) => {
+        // Skip hero reveals as they are handled above
+        if (el.closest('.hero-screen')) return;
+
         gsap.fromTo(el, 
             { 
                 opacity: 0, 
@@ -721,7 +724,7 @@
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 92%',
-                    toggleActions: 'play none none none'
+                    toggleActions: 'play reverse play reverse'
                 },
                 opacity: 1,
                 y: 0,
@@ -730,8 +733,7 @@
                 rotateX: 0,
                 duration: 1.2,
                 ease: 'expo.out',
-                delay: el.classList.contains('card-lift') ? (index % 3) * 0.08 : 0,
-                clearProps: 'filter, transform'
+                delay: el.classList.contains('card-lift') ? (index % 3) * 0.08 : 0
             }
         );
     });

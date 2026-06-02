@@ -13,8 +13,13 @@
         </a>
 
         <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-            <div class="h-64 flex items-center justify-center text-6xl" style="background: linear-gradient(135deg, #FFF8DC, #FFB6C1);">
-                📝
+            <div class="h-64 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #FFF8DC, #FFB6C1);">
+                @if($article->featured_image)
+                <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}"
+                    class="w-full h-full object-cover">
+                @else
+                <span class="text-6xl">📝</span>
+                @endif
             </div>
             <div class="p-8">
                 <div class="flex items-center space-x-3 text-sm text-gray-400 mb-4">

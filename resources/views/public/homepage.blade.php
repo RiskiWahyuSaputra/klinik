@@ -519,8 +519,13 @@
             @foreach($articles as $article)
             <div class="reveal card-lift bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group cursor-pointer">
                 <div class="h-44 bg-gradient-to-br from-rose-100 via-rose-50 to-gold-50 flex items-center justify-center relative overflow-hidden">
-                    <svg class="w-16 h-16 text-rose-200 group-hover:text-rose-300 transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+                    @if($article->featured_image)
+                    <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}"
+                        class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent"></div>
+                    @else
+                    <svg class="w-16 h-16 text-rose-200 group-hover:text-rose-300 transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+                    @endif
                 </div>
                 <div class="p-6">
                     <h3 class="font-poppins font-bold text-gray-900 mb-2 group-hover:text-rose-500 transition-colors">{{ $article->title }}</h3>

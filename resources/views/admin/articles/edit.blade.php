@@ -17,7 +17,7 @@
 </div>
 
 <div class="admin-card" style="max-width: 720px; padding: 28px 32px;">
-    <form method="POST" action="{{ route('admin.articles.update', $article) }}">
+    <form method="POST" action="{{ route('admin.articles.update', $article) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -42,6 +42,22 @@
             <input type="text" name="category" value="{{ old('category', $article->category) }}"
                 class="form-input"
                 placeholder="Contoh: Kesehatan, Tips">
+        </div>
+
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Gambar Featured</label>
+            @if($article->featured_image)
+            <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 12px;">
+                <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}"
+                    style="width: 80px; height: 60px; border-radius: 8px; object-fit: cover; border: 1px solid #eef0f5;">
+                <span style="font-size: 12px; color: #8e8ea0;">{{ basename($article->featured_image) }}</span>
+            </div>
+            @endif
+            <input type="file" name="featured_image" accept="image/jpeg,image/png,image/jpg,image/gif,image/webp"
+                class="form-input @error('featured_image') error @enderror"
+                style="padding: 10px 16px;">
+            <p style="font-size: 11px; color: #8e8ea0; margin-top: 4px;">Format: JPEG, PNG, JPG, GIF, WebP. Maks: 2MB. Biarkan kosong jika tidak ingin mengganti.</p>
+            @error('featured_image') <p class="form-error">{{ $message }}</p> @enderror
         </div>
 
         <div style="margin-bottom: 18px;">

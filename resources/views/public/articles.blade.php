@@ -12,8 +12,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($articles as $article)
         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
-            <div class="h-48 flex items-center justify-center text-4xl" style="background: linear-gradient(135deg, #FFF8DC, #FFB6C1);">
-                📝
+            <div class="h-48 flex items-center justify-center overflow-hidden" style="background: linear-gradient(135deg, #FFF8DC, #FFB6C1);">
+                @if($article->featured_image)
+                <img src="{{ asset('storage/' . $article->featured_image) }}" alt="{{ $article->title }}"
+                    class="w-full h-full object-cover">
+                @else
+                <span class="text-4xl">📝</span>
+                @endif
             </div>
             <div class="p-6">
                 <div class="flex items-center space-x-2 text-xs text-gray-400 mb-2">

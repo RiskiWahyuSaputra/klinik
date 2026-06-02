@@ -17,7 +17,7 @@
 </div>
 
 <div class="admin-card" style="max-width: 720px; padding: 28px 32px;">
-    <form method="POST" action="{{ route('admin.articles.store') }}">
+    <form method="POST" action="{{ route('admin.articles.store') }}" enctype="multipart/form-data">
         @csrf
 
         <div style="margin-bottom: 18px;">
@@ -41,6 +41,15 @@
             <input type="text" name="category" value="{{ old('category') }}"
                 class="form-input"
                 placeholder="Contoh: Kesehatan, Tips">
+        </div>
+
+        <div style="margin-bottom: 18px;">
+            <label class="form-label">Gambar Featured</label>
+            <input type="file" name="featured_image" accept="image/jpeg,image/png,image/jpg,image/gif,image/webp"
+                class="form-input @error('featured_image') error @enderror"
+                style="padding: 10px 16px;">
+            <p style="font-size: 11px; color: #8e8ea0; margin-top: 4px;">Format: JPEG, PNG, JPG, GIF, WebP. Maks: 2MB</p>
+            @error('featured_image') <p class="form-error">{{ $message }}</p> @enderror
         </div>
 
         <div style="margin-bottom: 18px;">

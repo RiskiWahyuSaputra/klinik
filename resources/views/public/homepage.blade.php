@@ -314,8 +314,8 @@
                 <div class="reveal flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="{{ route('register') }}" class="btn-gold px-8 py-4 rounded-2xl font-bold text-base shadow-lg flex items-center justify-center gap-2 cursor-pointer">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        Buat Appointment Baru
-                        
+                        Buat Appointment
+
                     </a>
                     <a href="{{ route('public.services') }}" class="btn-outline px-8 py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2 cursor-pointer">
                         Lihat Layanan

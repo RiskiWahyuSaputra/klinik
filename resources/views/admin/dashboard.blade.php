@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6" style="margin-top: 40px;">
     <div class="lg:col-span-2">
         <div class="admin-card overflow-hidden">
             <div style="padding: 20px 24px; border-bottom: 1px solid #eef0f5;">

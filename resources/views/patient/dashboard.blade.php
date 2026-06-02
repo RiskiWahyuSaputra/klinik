@@ -3,6 +3,31 @@
 @section('title', 'Dashboard Pasien')
 @section('breadcrumb', 'Dashboard')
 
+@push('styles')
+<style>
+    .animate-fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .stat-card-anim {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .stat-card-anim:nth-child(1) { animation-delay: 0.05s; }
+    .stat-card-anim:nth-child(2) { animation-delay: 0.12s; }
+    .stat-card-anim:nth-child(3) { animation-delay: 0.19s; }
+
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+@endpush
+
 @section('content')
 <div>
     <div class="page-header">
@@ -13,7 +38,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div class="stat-card">
+        <div class="stat-card stat-card-anim">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-xs font-medium uppercase tracking-wider" style="color: var(--text-muted);">Total Appointment</p>
@@ -24,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card stat-card-anim">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-xs font-medium uppercase tracking-wider" style="color: var(--text-muted);">Selesai</p>
@@ -35,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card stat-card-anim">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-xs font-medium uppercase tracking-wider" style="color: var(--text-muted);">Menunggu</p>
@@ -48,7 +73,7 @@
         </div>
     </div>
 
-    <div class="card overflow-hidden" style="margin-top: 40px;">
+    <div class="card overflow-hidden animate-fade-up" style="margin-top: 40px;">
         <div class="flex items-center justify-between px-5 py-4 border-b" style="border-color: var(--border);">
             <h2 class="font-semibold" style="font-size: 15px; font-family: 'Poppins', sans-serif;">Appointment Mendatang</h2>
             @if($upcomingAppointments->count())

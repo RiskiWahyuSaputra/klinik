@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="card overflow-hidden">
+    <div class="card overflow-hidden" style="margin-top: 40px;">
         <div class="flex items-center justify-between px-5 py-4 border-b" style="border-color: var(--border);">
             <h2 class="font-semibold" style="font-size: 15px; font-family: 'Poppins', sans-serif;">Appointment Hari Ini</h2>
             <span class="text-sm" style="color: var(--text-muted);">{{ $todayAppointments->count() }} appointment</span>

@@ -12,8 +12,26 @@
     <div class="rounded-2xl overflow-hidden mb-8" style="background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);">
         <div style="background: linear-gradient(135deg, #1a0f1c, #2d1a28); padding: 32px 28px;">
             <div class="flex items-center gap-5">
-                <div style="width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, #FFB6C1, #FF69B4); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: #fff; flex-shrink: 0; font-family: 'Poppins', sans-serif; box-shadow: 0 4px 16px rgba(255, 105, 180, 0.4);">
-                    {{ substr($user->name, 0, 1) }}
+                <div class="photo-upload-wrap" style="position: relative; flex-shrink: 0;">
+                    <div id="profileAvatar"
+                        style="width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 16px rgba(255, 105, 180, 0.4); cursor: pointer; position: relative;"
+                        onclick="document.getElementById('photoInput').click()"
+                        title="Klik untuk mengganti foto">
+                        @if($user->photo)
+                        <img src="{{ asset('storage/' . $user->photo) }}" alt="{{ $user->name }}"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        @else
+                        <div style="width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg, #FFB6C1, #FF69B4); display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700; color: #fff; font-family: 'Poppins', sans-serif;">
+                            {{ substr($user->name, 0, 1) }}
+                        </div>
+                        @endif
+                        <div class="photo-overlay" style="position: absolute; inset: 0; border-radius: 50%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <h2 style="font-size: 20px; font-weight: 700; color: #fff; font-family: 'Poppins', sans-serif;">{{ $user->name }}</h2>
@@ -55,9 +73,13 @@
                 <h2 style="font-size: 16px; font-weight: 600; color: #1a1a2e; font-family: 'Poppins', sans-serif;">Data Pribadi</h2>
             </div>
 
-            <form method="POST" action="{{ route('profile.update') }}">
+            <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
+                <!-- Hidden file input for photo -->
+                <input type="file" id="photoInput" name="photo" accept="image/jpeg,image/png,image/jpg,image/gif,image/webp"
+                    style="display: none;" onchange="previewPhoto(this)">
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
                     <div>
@@ -83,7 +105,21 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #eef0f5;">
+                @error('photo') <p class="form-error" style="margin-bottom: 12px;">{{ $message }}</p> @enderror
+
+                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #eef0f5; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <button type="button" class="btn-secondary btn-sm" onclick="document.getElementById('photoInput').click()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                            Ganti Foto
+                        </button>
+                        @if($user->photo)
+                        <span id="photoStatus" style="font-size: 12px; color: #8e8ea0; margin-left: 8px;">{{ basename($user->photo) }}</span>
+                        @endif
+                    </div>
                     <button type="submit" class="btn-primary">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
@@ -144,6 +180,9 @@
 </div>
 
 <style>
+    .photo-upload-wrap:hover .photo-overlay {
+        opacity: 1 !important;
+    }
     .btn-primary {
         display: inline-flex;
         align-items: center;
@@ -187,6 +226,11 @@
         background: #f8f9fc;
         border-color: #d0d2da;
     }
+    .btn-sm {
+        padding: 8px 14px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
     .form-input {
         width: 100%;
         padding: 11px 16px;
@@ -227,4 +271,25 @@
         }
     }
 </style>
+
+<script>
+function previewPhoto(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const avatar = document.getElementById('profileAvatar');
+            avatar.innerHTML = '<img src="' + e.target.result + '" alt="Preview" style="width: 100%; height: 100%; object-fit: cover;">'
+                + '<div class="photo-overlay" style="position: absolute; inset: 0; border-radius: 50%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease;">'
+                + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+                + '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>'
+                + '<circle cx="12" cy="13" r="4"></circle></svg></div>';
+            const status = document.getElementById('photoStatus');
+            if (status) {
+                status.textContent = input.files[0].name;
+            }
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 @endsection

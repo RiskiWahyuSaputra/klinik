@@ -14,6 +14,7 @@ class User extends Authenticatable
         'name',
         'email',
         'phone',
+        'photo',
         'password',
         'role',
         'is_active',
@@ -48,6 +49,14 @@ class User extends Authenticatable
     public function notifications()
     {
         return $this->hasMany(InappNotification::class);
+    }
+
+    // Accessors
+    public function getPhotoUrlAttribute(): string
+    {
+        return $this->photo
+            ? asset('storage/' . $this->photo)
+            : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&background=FF69B4&color=fff&size=200';
     }
 
     // Helper methods

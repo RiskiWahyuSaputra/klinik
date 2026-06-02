@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinik Utama Mon Cheri — Layanan Kesehatan Profesional & Terpercaya</title>
-    <meta name="description" content="Klinik Utama Mon Cheri menyediakan layanan kesehatan profesional dengan sentuhan kasih sayang. Booking appointment online dengan mudah.">
+    <title>Klinik Utama KlinikQ — Layanan Kesehatan Profesional & Terpercaya</title>
+    <meta name="description" content="Klinik Utama KlinikQ menyediakan layanan kesehatan profesional dengan sentuhan kasih sayang. Booking appointment online dengan mudah.">
     @vite(['resources/css/app.css'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -242,7 +242,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
                     </svg>
                 </div>
-                <span class="text-xl font-poppins font-bold text-gray-800 group-hover:text-rose-500 transition-colors">Mon Cheri</span>
+                <span class="text-xl font-poppins font-bold text-gray-800 group-hover:text-rose-500 transition-colors"> KLINIKQ</span>
             </a>
 
             <!-- Desktop nav -->
@@ -308,7 +308,7 @@
                 </h1>
 
                 <p class="reveal text-lg text-gray-800 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8">
-                    <strong class="text-gray-900 font-bold">Klinik Utama Mon Cheri</strong> menyediakan layanan kesehatan profesional dengan sentuhan kasih sayang. Booking appointment secara online dengan mudah dan cepat.
+                    <strong class="text-gray-900 font-bold">Klinik Q</strong> menyediakan layanan kesehatan profesional dengan sentuhan kasih sayang. Booking appointment secara online dengan mudah dan cepat.
                 </p>
 
                 <div class="reveal flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -411,7 +411,7 @@
         <div class="text-center max-w-2xl mx-auto mb-16">
             <div class="reveal inline-flex items-center gap-2 px-4 py-2 bg-gold-50 rounded-full text-xs font-bold text-gold-600 mb-4">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                KENAPA MON CHERI
+                KENAPA KLINIKQ
             </div>
             <h2 class="reveal section-title text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
                 Keunggulan <span class="title-underline">Kami</span>
@@ -582,7 +582,7 @@
             <div class="glass-card rounded-2xl p-6 shadow-sm">
                 <svg class="w-8 h-8 text-rose-400 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
                 <p class="font-bold text-gray-800 text-sm">Email</p>
-                <p class="text-gray-500 text-sm mt-1">info@moncheri-klinik.id</p>
+                <p class="text-gray-500 text-sm mt-1">info@klinikq.id</p>
             </div>
             <div class="glass-card rounded-2xl p-6 shadow-sm">
                 <svg class="w-8 h-8 text-rose-400 mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
@@ -615,9 +615,9 @@
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-400 to-rose-500 flex items-center justify-center">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg>
                     </div>
-                    <span class="text-xl font-poppins font-bold">Mon Cheri</span>
+                    <span class="text-xl font-poppins font-bold">KlinikQ</span>
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed">Klinik Utama Mon Cheri — layanan kesehatan profesional dengan sentuhan kasih sayang untuk Anda dan keluarga.</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Klinik Utama KlinikQ — layanan kesehatan profesional dengan sentuhan kasih sayang untuk Anda dan keluarga.</p>
             </div>
 
             <!-- Quick Links -->
@@ -655,7 +655,7 @@
                     </li>
                     <li class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-                        info@moncheri-klinik.id
+                        info@klinikq.id
                     </li>
                     <li class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
@@ -666,7 +666,7 @@
         </div>
 
         <div class="border-t border-gray-800 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-gray-500 text-sm">&copy; {{ date('Y') }} Klinik Utama Mon Cheri. All rights reserved.</p>
+            <p class="text-gray-500 text-sm">&copy; {{ date('Y') }} Klinik Utama KlinikQ. All rights reserved.</p>
             <p class="text-gray-600 text-xs">Dibuin dengan <span class="text-rose-400">&#9829;</span> untuk kesehatan Indonesia</p>
         </div>
     </div>

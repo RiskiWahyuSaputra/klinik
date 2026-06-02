@@ -1001,6 +1001,69 @@
                 font-size: 18px;
             }
         }
+
+        /* ─── Mobile Overrides untuk Semua Halaman Admin ─── */
+        @media (max-width: 768px) {
+            /* Form cards: hilangkan max-width biar nggak overflow */
+            .admin-card[style*="max-width"] {
+                max-width: 100% !important;
+                padding: 20px 16px !important;
+            }
+
+            /* Grid forms: 2 kolom jadi 1 kolom */
+            [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Schedules page: 2 kolom jadi 1 kolom */
+            .schedules-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+
+
+            /* Page header buttons jadi full width */
+            .page-header .btn-primary,
+            .page-header .btn-secondary,
+            .page-header a.btn-primary,
+            .page-header a.btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Aksi column button groups: stack vertikal */
+            td[data-label="Aksi"] [style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 6px !important;
+            }
+            td[data-label="Aksi"] form {
+                width: 100%;
+            }
+            td[data-label="Aksi"] .btn-sm,
+            td[data-label="Aksi"] form button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Dokter: layanan checkboxes */
+            [style*="repeat(auto-fill, minmax(150px, 1fr))"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            /* Pagination lebih compact */
+            .pagination-wrap a, .pagination-wrap span {
+                min-width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Grid form layanan checkboxes: 1 kolom */
+            [style*="repeat(auto-fill, minmax(150px, 1fr))"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
     @stack('styles')
 </head>

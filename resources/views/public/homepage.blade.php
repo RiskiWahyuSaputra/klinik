@@ -461,10 +461,18 @@
             @foreach($doctors as $doctor)
             <div class="reveal card-lift bg-white rounded-2xl shadow-sm hover:shadow-md border border-gray-100 overflow-hidden">
                 <div class="h-48 bg-gradient-to-br from-rose-100 via-rose-50 to-gold-50 flex items-center justify-center relative">
-                    <div class="w-24 h-24 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center">
-                        <svg class="w-12 h-12 text-rose-300" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
+                    <div class="w-24 h-24 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center overflow-hidden">
+                        @if($doctor->photo)
+                        <img src="{{ asset('storage/' . $doctor->photo) }}" alt="dr. {{ $doctor->user->name }}"
+                            class="w-full h-full object-cover">
+                        @elseif($doctor->user->photo)
+                        <img src="{{ asset('storage/' . $doctor->user->photo) }}" alt="dr. {{ $doctor->user->name }}"
+                            class="w-full h-full object-cover">
+                        @else
+                        <div class="w-full h-full rounded-full bg-gradient-to-br from-rose-300 to-rose-400 flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold font-[Poppins]">{{ substr($doctor->user->name, 0, 1) }}</span>
+                        </div>
+                        @endif
                     </div>
                     <div class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur rounded-lg flex items-center justify-center">
                         <svg class="w-4 h-4 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>

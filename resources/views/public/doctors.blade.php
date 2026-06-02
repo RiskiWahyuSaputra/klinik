@@ -12,8 +12,16 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse($doctors as $doctor)
         <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6 text-center border border-gray-100">
-            <div class="w-24 h-24 rounded-full mx-auto flex items-center justify-center text-4xl mb-4" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">
-                👨‍⚕️
+            <div class="w-24 h-24 rounded-full mx-auto flex items-center justify-center mb-4 overflow-hidden" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);">
+                @if($doctor->photo)
+                <img src="{{ asset('storage/' . $doctor->photo) }}" alt="dr. {{ $doctor->user->name }}"
+                    class="w-full h-full object-cover">
+                @elseif($doctor->user->photo)
+                <img src="{{ asset('storage/' . $doctor->user->photo) }}" alt="dr. {{ $doctor->user->name }}"
+                    class="w-full h-full object-cover">
+                @else
+                <span class="text-4xl">👨‍⚕️</span>
+                @endif
             </div>
             <h3 class="font-semibold text-gray-800 text-lg">dr. {{ $doctor->user->name }}</h3>
             <p class="text-sm" style="color: #D4AF37;">{{ $doctor->specialization ?? 'Dokter Umum' }}</p>

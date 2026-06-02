@@ -9,7 +9,7 @@
     <h1 class="page-title">Kelola Jadwal Dokter</h1>
 </div>
 
-<div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+<div style="display: grid; grid-template-columns: 1fr 380px; gap: 24px; align-items: start;">
     <div class="admin-card overflow-hidden">
         <div style="padding: 20px 24px; border-bottom: 1px solid #eef0f5;">
             <h2 style="font-size: 16px; font-weight: 600; color: #1a1a2e;">Jadwal Tersedia</h2>
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="admin-card" style="max-width: 500px; padding: 24px;">
+    <div class="admin-card" style="padding: 24px;">
         <h2 style="font-size: 16px; font-weight: 600; color: #1a1a2e; margin-bottom: 20px;">Tambah Jadwal Baru</h2>
 
         <form method="POST" action="{{ route('admin.schedules.store') }}">

@@ -76,6 +76,12 @@ class StaffController extends Controller
             ->with('success', 'Pasien berhasil diregistrasi.');
     }
 
+    public function showPatient(Patient $patient)
+    {
+        $patient->load('user', 'appointments.doctor.user', 'appointments.service', 'medicalRecords.doctor.user');
+        return view('staff.patients.show', compact('patient'));
+    }
+
     public function searchPatient(Request $request)
     {
         $query = $request->get('q');

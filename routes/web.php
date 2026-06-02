@@ -90,10 +90,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [StaffController::class, 'dashboard'])->name('dashboard');
         Route::get('/patients', [StaffController::class, 'patients'])->name('patients');
         Route::get('/patients/create', [StaffController::class, 'createPatient'])->name('patients.create');
-        Route::post('/patients', [StaffController::class, 'storePatient'])->name('patients.store');
-        Route::get('/patients/search', [StaffController::class, 'searchPatient'])->name('patients.search');
+        Route::post('/patients', [StaffController::class, 'storePatient'])->name('patients.store');                        Route::get('/patients/{patient}', [StaffController::class, 'showPatient'])->name('patients.show');
+                        Route::get('/patients/search', [StaffController::class, 'searchPatient'])->name('patients.search');
 
-        // Payments
+                        // Payments
         Route::get('/payments', [PaymentController::class, 'history'])->name('payments');
         Route::get('/payments/create/{appointment}', [PaymentController::class, 'create'])->name('payments.create');
         Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');

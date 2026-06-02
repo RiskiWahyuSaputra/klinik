@@ -50,7 +50,10 @@
                         <td data-label="Email">{{ $patient->user->email }}</td>
                         <td data-label="Telepon">{{ $patient->phone ?? $patient->user->phone ?? '-' }}</td>
                         <td data-label="Aksi">
-                            <span class="text-sm" style="color: var(--text-muted);">—</span>
+                            <a href="{{ route('staff.patients.show', $patient) }}" class="btn btn-outline btn-sm">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Detail
+                            </a>
                         </td>
                     </tr>
                     @empty

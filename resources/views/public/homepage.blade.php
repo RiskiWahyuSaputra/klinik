@@ -299,7 +299,7 @@
                 <!-- Badge -->
                 <div class="reveal inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full text-xs font-bold text-rose-600 border border-rose-200/60 shadow-sm mb-6">
                    
-                    LAYANAN KESEHATAN PROFESIONAL
+                    LAYANAN KESEHATAN MON CHERI
                 </div>
 
                 <h1 class="reveal text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-poppins font-extrabold leading-[1.1] text-gray-950 mb-6">

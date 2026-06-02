@@ -1,4 +1,4 @@
-@extends('layouts.patient')
+@extends(auth()->user()->isStaff() ? 'layouts.staff' : 'layouts.patient')
 
 @section('title', 'Buat Appointment')
 @section('breadcrumb', 'Appointment / Baru')
@@ -11,11 +11,36 @@
                 <h1 class="page-title">Buat Appointment</h1>
                 <p class="page-subtitle">Isi data di bawah untuk booking appointment</p>
             </div>
+            @if($selectedPatient)
+            <a href="{{ route('staff.patients.show', $selectedPatient) }}" class="btn btn-outline btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Kembali
+            </a>
+            @endif
         </div>
+
+        @if($selectedPatient)
+        <div class="card p-4 mb-5" style="background: #f0fdf4; border: 1px solid #bbf7d0;">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold flex-shrink-0" style="background: #dcfce7; color: #16a34a;">
+                    {{ substr($selectedPatient->user->name, 0, 1) }}
+                </div>
+                <div>
+                    <p class="text-sm font-medium" style="color: #166534;">Membuat appointment untuk pasien</p>
+                    <p class="text-sm font-semibold" style="color: #14532d;">{{ $selectedPatient->user->name }} — {{ $selectedPatient->patient_number ?? 'P-'.str_pad($selectedPatient->id, 4, '0', STR_PAD_LEFT) }}</p>
+                </div>
+                <input type="hidden" name="patient_id" value="{{ $selectedPatient->id }}">
+            </div>
+        </div>
+        @endif
 
         <div class="card p-6">
             <form method="POST" action="{{ route('appointments.store') }}" id="appointmentForm">
                 @csrf
+
+                @if($selectedPatient)
+                <input type="hidden" name="patient_id" value="{{ $selectedPatient->id }}">
+                @endif
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
@@ -120,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 timeSelect.innerHTML = '<option value="">Pilih Jam</option>';
                 if (data.times && data.times.length > 0) {
-                    data.times.forEach(time => {
+                    data.forEach(time => {
                         const opt = document.createElement('option');
                         opt.value = time;
                         opt.textContent = time;

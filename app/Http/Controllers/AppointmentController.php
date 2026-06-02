@@ -47,11 +47,17 @@ class AppointmentController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $doctors = Doctor::with('user', 'schedules', 'services')->where('is_available', true)->get();
         $services = Service::where('is_active', true)->get();
-        return view('patient.appointments.create', compact('doctors', 'services'));
+
+        $selectedPatient = null;
+        if ($request->patient_id && auth()->user()->isStaff()) {
+            $selectedPatient = Patient::with('user')->findOrFail($request->patient_id);
+        }
+
+        return view('patient.appointments.create', compact('doctors', 'services', 'selectedPatient'));
     }
 
     public function store(Request $request)
@@ -65,7 +71,13 @@ class AppointmentController extends Controller
         ]);
 
         $user = auth()->user();
-        $patient = $user->patient;
+
+        // Staff/admin bisa buat appointment untuk pasien lain
+        if ($user->isStaff() && $request->patient_id) {
+            $patient = Patient::findOrFail($request->patient_id);
+        } else {
+            $patient = $user->patient;
+        }
 
         $doctor = Doctor::findOrFail($request->doctor_id);
         $service = $request->service_id ? Service::find($request->service_id) : null;

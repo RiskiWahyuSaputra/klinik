@@ -10,10 +10,16 @@
             <h1 class="page-title">Detail Pasien</h1>
             <p class="page-subtitle">Informasi lengkap pasien</p>
         </div>
-        <a href="{{ route('staff.patients') }}" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-            Kembali
-        </a>
+        <div class="flex items-center gap-2">
+            <a href="{{ route('appointments.create', ['patient_id' => $patient->id]) }}" class="btn btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Buat Appointment
+            </a>
+            <a href="{{ route('staff.patients') }}" class="btn btn-outline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Kembali
+            </a>
+        </div>
     </div>
 
     <!-- Profile Header -->

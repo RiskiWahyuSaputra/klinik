@@ -17,7 +17,7 @@
     </div>
 
     <div class="card p-4 mb-5">
-        <form method="GET" class="flex gap-3">
+        <form method="GET" class="flex flex-wrap gap-3">
             <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama/email/telepon..." class="input" style="flex: 1; min-width: 200px;">
             <button type="submit" class="btn btn-primary">Cari</button>
         </form>
